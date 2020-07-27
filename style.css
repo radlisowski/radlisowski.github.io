@@ -1,0 +1,59 @@
+.main {
+    text-align: center;
+}
+
+.headding {
+    color: rgb(255, 255, 255, 80);
+    font-weight: lighter;
+
+}
+
+.box {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+    border-top: none;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+}
+
+.blur {
+    margin-top: 15%;
+    margin-bottom: 15%;
+}
+
+.test1 {
+    background-color: red;
+}
+
+.test3 {
+    background-color: green;
+}
+
+.btn {
+    background-color: rgba(255, 255, 255, 0.1);
+    font-size: medium;
+    font-size: 20px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: rgb(255, 255, 255, 80);
+    font-weight: lighter;
+}
+
+.buttons {
+    padding-top: 80px;
+}
+
+.background {
+    background-image: url(img/Web\ 1920\ –\ 1.png);
+    background-position: center center;
+    background-repeat: no-repeat; 
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: black;
+}
