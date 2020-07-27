@@ -2,12 +2,12 @@
     text-align: center;
 }
 
-.headding {
-    color: rgb(255, 255, 255, 80);
-    font-weight: lighter;
+.spacing {
+    margin-top: 15%;
+    margin-bottom: 15%;
 }
 
-.box {
+.hero-message {
     background-color: rgba(255, 255, 255, 0.1);
     border-top-left-radius: 12px;
     border-bottom-left-radius: 12px;
@@ -19,17 +19,13 @@
     border-right: none;
 }
 
-.blur {
-    margin-top: 15%;
-    margin-bottom: 15%;
+.headding {
+    color: rgb(255, 255, 255, 80);
+    font-weight: lighter;
 }
 
-.test1 {
-    background-color: red;
-}
-
-.test3 {
-    background-color: green;
+.sub-headding {
+    font-size: 18px;
 }
 
 .btn {
@@ -51,8 +47,16 @@
 .background {
     background-image: url(img/Web\ 1920\ –\ 1.png);
     background-position: center center;
-    background-repeat: no-repeat; 
+    background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
     background-color: black;
+}
+
+.test1 {
+    background-color: red;
+}
+
+.test3 {
+    background-color: green;
 }
