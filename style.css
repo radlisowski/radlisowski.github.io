@@ -1,31 +1,16 @@
-.main {
-    text-align: center;
+
+.hero-box {
+    background-color: rgba(255, 255, 255, 0.1); 
+    border-color: white; 
+    border-width: 2px;   
+}
+.hero-text{
+    color: white;
 }
 
-.spacing {
+.space {
     margin-top: 15%;
     margin-bottom: 15%;
-}
-
-.hero-message {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-top-left-radius: 12px;
-    border-bottom-left-radius: 12px;
-    border-top-right-radius: 12px;
-    border-bottom-right-radius: 12px;
-    border-top: none;
-    border-bottom: none;
-    border-left: none;
-    border-right: none;
-}
-
-.headding {
-    color: rgb(255, 255, 255, 80);
-    font-weight: lighter;
-}
-
-.sub-headding {
-    font-size: 18px;
 }
 
 .btn {
@@ -36,28 +21,20 @@
     padding-right: 40px;
     padding-top: 10px;
     padding-bottom: 10px;
-    color: rgb(255, 255, 255, 80);
-    font-weight: lighter;
+    color: rgb(255, 255, 255, 80); 
+    border-color: white; 
+    border-width: 2px; 
 }
 
-
 .buttons {
-    padding-top: 80px;
+    padding-top: 7%;
 }
 
 .background {
-    background-image: url(img/Web\ 1920\ –\ 1.png);
+    background-image: url(img/background.jpg);
     background-position: center center;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat; 
     background-attachment: fixed;
     background-size: cover;
-    background-color: black;
-}
-
-.test1 {
-    background-color: red;
-}
-
-.test3 {
-    background-color: green;
+    background-color: White;
 }
