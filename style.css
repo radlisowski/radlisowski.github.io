@@ -31,10 +31,10 @@
 }
 
 .background {
-    background-image: url(img/background.jpg);
+    /* background-image: url(img/background.jpg);
     background-position: center center;
     background-repeat: no-repeat; 
     background-attachment: fixed;
-    background-size: cover;
-    background-color: White;
+    background-size: cover; */
+    background-color: black;
 }
