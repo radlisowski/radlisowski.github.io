@@ -1,11 +1,11 @@
 let markers = [],
     map,
     zoom = 8;
-
+    
 function initMap() {
     const map = new google.maps.Map(document.getElementById("map"), {
         zoom: zoom,
-        center: { lat: 53.529154, lng: -7.797545 },
+        center: { lat: 53.529154, lng: -7.797545 },  
     });
 
     map.addListener("click", (e) => {
@@ -43,3 +43,8 @@ function setMapOnAll(map) {
     }
     markers = [];
 }
+
+$(document).ready(function () {
+    $("#myModal").modal('show');
+  });
+
