@@ -100,8 +100,5 @@ section#home {
 }
 
 section#projects {
-    /* padding-top: 100px; this has to only apply to xs device sixze 
-    justify-content: top; */
-    justify-content: center;
     background: url('https://images.unsplash.com/photo-1587829028817-0fa1a0d12f60?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2000&q=80') no-repeat center;
 }
