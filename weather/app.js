@@ -64,6 +64,7 @@ function getWeather(latitude, longitude){
     })
     .then(function(){
         displayWeather();
+        updateWallpapper();
     });
 }
 
@@ -73,6 +74,16 @@ function displayWeather() {
     feelsLikeElement.innerHTML = `Feels like: ${weather.feelsLike.value}°<span>C</span>`;
     descElement.innerHTML = weather.description;
     locationElement.innerHTML = `${weather.city}, ${weather.country} `;
+}
+
+function updateWallpapper() {
+    if (weather.description == 'scattered clouds') {
+        document.body.style.background = "#293251 url('https://images.unsplash.com/photo-1445297983845-454043d4eef4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80') no-repeat center";
+    }
+
+    if (weather.description == 'rain') {
+        document.body.style.background = "#293251 url('https://images.unsplash.com/photo-1433863448220-78aaa064ff47?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2089&q=80') no-repeat center";
+    }
 }
 
 // C to F conversion
