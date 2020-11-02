@@ -88,6 +88,13 @@ function updateWallpapper() {
         document.body.style.background = "#293251 url('https://images.unsplash.com/photo-1433863448220-78aaa064ff47?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2089&q=80') no-repeat";
         favIcon.href = "/weather/img/rain.png"
     }
+
+    if (/sun/.test(weather.description)) {
+        document.body.style.background = "#293251 url('https://images.unsplash.com/photo-1595533625716-ee2623108b0d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1934&q=80') no-repeat";
+        favIcon.href = "/weather/img/sunny.png"
+    }
+
+    
 }
 
 // C to F conversion
