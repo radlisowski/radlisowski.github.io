@@ -5,6 +5,7 @@ const feelsLikeElement = document.querySelector(".feels-like");
 const descElement = document.querySelector(".temperature-description p");
 const locationElement = document.querySelector(".location");
 const notificationElement = document.querySelector(".notification");
+const favIcon = document.querySelector(".fav-icon");
 
 //data
 const weather = {};
@@ -79,11 +80,13 @@ function displayWeather() {
 function updateWallpapper() {
     
     if (/cloud/.test(weather.description)) {
-        document.body.style.background = "#293251 url('https://images.unsplash.com/photo-1445297983845-454043d4eef4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80') no-repeat center";
+        document.body.style.background = "#293251 url('https://images.unsplash.com/photo-1500740516770-92bd004b996e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1952&q=80') no-repeat";
+        favIcon.href = "/weather/img/cloudy.png"
     }
 
     if (/rain/.test(weather.description)) {
-        document.body.style.background = "#293251 url('https://images.unsplash.com/photo-1433863448220-78aaa064ff47?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2089&q=80') no-repeat center";
+        document.body.style.background = "#293251 url('https://images.unsplash.com/photo-1433863448220-78aaa064ff47?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2089&q=80') no-repeat";
+        favIcon.href = "/weather/img/rain.png"
     }
 }
 
