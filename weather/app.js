@@ -14,7 +14,7 @@ weather.temperature = {
 }
 
 weather.feelsLike = {
-    unit: "celcius"
+    
 }
 
 //const and vars
@@ -34,10 +34,7 @@ if('geolocation' in navigator){
 function setPosition(position) {
     let latitude = position.coords.latitude;
     let longitude = position.coords.longitude;
-    
     getWeather(latitude, longitude);
-    
-    console.log(latitude, longitude)
 }
 
 //show error when there is an issue with the geolocation
@@ -88,13 +85,18 @@ tempElement.addEventListener("click", function(){
     if(weather.temperature.value === undefined) return;
     
     if(weather.temperature.unit == "celsius"){
-        let fahrenheit = celsiusToFahrenheit(weather.temperature.value);
-        fahrenheit = Math.floor(fahrenheit);
-        
-        tempElement.innerHTML = `${fahrenheit}°<span>F</span>`;
+        let fahrenheitTemp = celsiusToFahrenheit(weather.temperature.value);
+        fahrenheitTemp = Math.floor(fahrenheitTemp);
+
+        let farenhightFeelsLike = celsiusToFahrenheit(weather.feelsLike.value);
+        farenhightFeelsLike = Math.floor(farenhightFeelsLike);
+
+        tempElement.innerHTML = `${fahrenheitTemp}°<span>F</span>`;
+        feelsLikeElement.innerHTML = `Feels like: ${farenhightFeelsLike}°<span>F</span>`;
         weather.temperature.unit = "fahrenheit";
     }else{
         tempElement.innerHTML = `${weather.temperature.value}°<span>C</span>`;
+        feelsLikeElement.innerHTML = `Feels like: ${weather.feelsLike.value}°<span>C</span>`;
         weather.temperature.unit = "celsius"
     }
 });
