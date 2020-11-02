@@ -1,16 +1,52 @@
+
+
 let markers = [],
     map,
-    zoom = 8;
-    
-function initMap() {
-    const map = new google.maps.Map(document.getElementById("map"), {
-        zoom: zoom,
-        center: { lat: 53.529154, lng: -7.797545 },  
-    });
+    zoom = 8,
+    latlong;
 
-    map.addListener("click", (e) => {
-        placeMarkerAndPanTo(e.latLng, map);
+    const notificationElement = document.querySelector(".errorModal")
+
+
+if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+
+    navigator.geolocation.getCurrentPosition(success, showError);
+    
+    function initMap() {
+        const map = new google.maps.Map(document.getElementById("map"), {
+            zoom: zoom,
+            center: latlong,
+        });
+        placeMarkerAndPanTo(latlong, map);
+    }
+
+} else {
+    function initMap() {
+        const map = new google.maps.Map(document.getElementById("map"), {
+            zoom: zoom,
+            center: { lat: 53.529154, lng: -7.797545 },
+        });
+        map.addListener("click", (e) => {
+            placeMarkerAndPanTo(e.latLng, map);
+        });
+    }
+    $(document).ready(function () {
+        $("#myModal").modal('show');
     });
+}
+
+function success(pos) {
+    let cords = pos.coords;
+    latlong = {
+        lat: cords.latitude,
+        lng: cords.longitude
+    }
+    
+}
+
+function showError(error) { 
+    
+    alert(error.message);
 }
 
 function placeMarkerAndPanTo(latLng, map) {
@@ -44,7 +80,5 @@ function setMapOnAll(map) {
     markers = [];
 }
 
-$(document).ready(function () {
-    $("#myModal").modal('show');
-  });
+
 
