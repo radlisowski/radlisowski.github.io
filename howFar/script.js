@@ -9,18 +9,19 @@ let markers = [],
 
 
 if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-
-    navigator.geolocation.getCurrentPosition(success, showError);
+    
+    navigator.geolocation.getCurrentPosition(success, showError, {timeout:10000});
     
     function initMap() {
         const map = new google.maps.Map(document.getElementById("map"), {
-            zoom: zoom,
+            zoom: 9,
             center: latlong,
         });
         placeMarkerAndPanTo(latlong, map);
     }
 
 } else {
+    
     function initMap() {
         const map = new google.maps.Map(document.getElementById("map"), {
             zoom: zoom,
@@ -47,6 +48,18 @@ function success(pos) {
 function showError(error) { 
     
     alert(error.message);
+    function initMap() {
+        const map = new google.maps.Map(document.getElementById("map"), {
+            zoom: zoom,
+            center: { lat: 53.529154, lng: -7.797545 },
+        });
+        map.addListener("click", (e) => {
+            placeMarkerAndPanTo(e.latLng, map);
+        });
+    }
+    $(document).ready(function () {
+        $("#myModal").modal('show');
+    });
 }
 
 function placeMarkerAndPanTo(latLng, map) {
