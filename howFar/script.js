@@ -73,7 +73,7 @@ function placeMarkerAndPanTo(latLng, map) {
 
     const circle = new google.maps.Circle({
         map: map,
-        radius: 2000,
+        radius: 5000,
         fillColor: '#008000',
         strokeOpacity: 0,
         fillOpacity: 0.3,
