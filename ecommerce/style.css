@@ -1,0 +1,87 @@
+.container {
+    display: grid;
+    margin-left: 10%;
+    margin-right: 10%;
+    height: 300vh;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 0.1fr 0.1fr  0.3fr 1.8fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.2fr;
+    grid-template-areas: 
+    "logo-nav searchbar-nav searchbar-nav buttons-right-nav"
+    "logo-nav buttons-middle-nav buttons-middle-nav buttons-right-nav"
+    "newsletter-banner newsletter-banner newsletter-banner newsletter-banner"
+    "hero-image-slideshow hero-image-slideshow hero-image-slideshow hero-image-slideshow"
+    "new-arrivals-image new-arrivals-image sofa-image-vertical stool-image-vertical"
+    "sofa-image-horizontal sofa-image-horizontal sofa-image-vertical stool-image-vertical"
+    "be-inspired-image be-inspired-image be-inspired-image be-inspired-image"
+    "be-inspired-image be-inspired-image be-inspired-image be-inspired-image"
+    "special-offer-image special-offer-image special-offer-image special-offer-image"
+    "special-offer-image special-offer-image special-offer-image special-offer-image"
+    "footer footer footer footer"
+    ;
+    grid-gap:0.2rem;
+}
+
+.logo-nav {
+    background-color: royalblue;
+    grid-area: logo-nav;
+}
+
+.searchbar-nav {
+    background-color: saddlebrown;
+    grid-area: searchbar-nav;
+}
+
+.buttons-right-nav {
+    background-color: seagreen;
+    grid-area: buttons-right-nav;
+}
+
+.buttons-middle-nav {
+    background-color: seashell;
+    grid-area: buttons-middle-nav;
+}
+
+.newsletter-banner {
+    background-color: skyblue;
+    grid-area: newsletter-banner;
+}
+
+.hero-image-slideshow {
+    background-color: slategray;
+    grid-area: hero-image-slideshow;
+}
+
+.new-arrivals-image {
+    background-color: springgreen;
+    grid-area: new-arrivals-image;
+}
+
+.sofa-image-horizontal {
+    background-color: tomato;
+    grid-area: sofa-image-horizontal;
+}
+
+.sofa-image-vertical {  
+    background-color: turquoise;
+    grid-area: sofa-image-vertical;
+}
+
+.stool-image-vertical {
+    background-color: violet;
+    grid-area: stool-image-vertical;
+}
+
+.be-inspired-image {
+    background-color: yellow;
+    grid-area: be-inspired-image;
+}
+
+.special-offer-image {
+    background-color: yellowgreen;
+    grid-area: special-offer-image;
+}
+
+footer {
+    background-color: brown;
+    grid-area: footer;
+}
