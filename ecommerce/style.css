@@ -22,24 +22,90 @@
 }
 
 .logo-nav {
-    background-color: royalblue;
+    /* background-color: yellowgreen; */
     grid-area: logo-nav;
+    margin: auto;
+    width: auto;
 }
 
 .searchbar-nav {
-    background-color: saddlebrown;
+    /* background-color: yellowgreen; */
     grid-area: searchbar-nav;
+    margin: auto;
+}
+
+.search-bar {
+    
+    border-radius: 1pc;
+    border: none;
+    width: 25rem;
+    box-shadow: 1px 5px 10px lightgray;
+    height: 1.6rem;
+    font-weight: 100;
+    color: grey;
+    font-size: 12px;
 }
 
 .buttons-right-nav {
-    background-color: seagreen;
+    /* background-color: seagreen; */
     grid-area: buttons-right-nav;
+    margin: auto;
+}
+
+.buttons-right-nav ul {
+    /* background-color: red; */
+    list-style: none;
+    float: left;
+    padding-left: 1px;
+    
+}
+
+.buttons-right-nav ul li {
+    /* background-color: blue; */
+    display: inline;
+    font-weight: 100;
+    color: lightgrey;
+    font-size: 12px;
+    margin:20px;
+    
+}
+
+.buttons-right-nav ul li a {
+    /* background-color: yellow; */
+    text-decoration-style: none;
 }
 
 .buttons-middle-nav {
-    background-color: seashell;
+    /* background-color: yellowgreen; */
     grid-area: buttons-middle-nav;
+    margin: auto;    
 }
+
+.buttons-middle-nav ul {
+    /* background-color: red; */
+    list-style: none;
+    float: left;
+    padding-left: 1px;
+    
+}
+
+.buttons-middle-nav ul li {
+    /* background-color: blue; */
+    display: inline;
+    font-weight: 100;
+    font-size: 16px;
+    margin:20px;
+    
+}
+
+.buttons-middle-nav ul li a {
+    /* background-color: yellow; */
+    text-decoration: none;
+    color: grey;
+}
+
+
+
 
 .newsletter-banner {
     background-color: skyblue;
@@ -84,4 +150,34 @@
 footer {
     background-color: brown;
     grid-area: footer;
+}
+
+@media only screen and (max-width: 750px) {
+    .container {
+        grid-template-columns: 1fr;
+        grid-template-rows: 0.1fr 0.1fr  0.3fr 1.8fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.2fr;
+        grid-template-areas: 
+        "logo-nav"
+        "searchbar-nav"
+        "buttons-right-nav"
+        "buttons-middle-nav"
+        "newsletter-banner"
+        "hero-image-slideshow"
+        "new-arrivals-image"
+        "sofa-image-horizontal"
+        "sofa-image-vertical"
+        "stool-image-vertical"
+        "be-inspired-image"
+        "special-offer-image"
+        "footer"
+        ;
+    }
+    .logo-nav {
+        margin: auto;
+        
+        
+    }
+    .logo-nav a {
+      
+    }
 }
