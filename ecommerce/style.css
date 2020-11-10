@@ -4,10 +4,10 @@
     margin-right: 10%;
     height: 300vh;
     grid-template-columns: 1fr 1fr 1fr 1fr;
-    grid-template-rows: 0.1fr 0.1fr  0.3fr 1.8fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.2fr;
+    grid-template-rows: 0.1fr 0.1fr 0.3fr 1.8fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.2fr;
     grid-template-areas: 
     "logo-nav searchbar-nav searchbar-nav buttons-right-nav"
-    "logo-nav buttons-middle-nav buttons-middle-nav buttons-right-nav"
+    "empty-sapce buttons-middle-left-nav buttons-middle-right-nav empty-space"
     "newsletter-banner newsletter-banner newsletter-banner newsletter-banner"
     "hero-image-slideshow hero-image-slideshow hero-image-slideshow hero-image-slideshow"
     "new-arrivals-image new-arrivals-image sofa-image-vertical stool-image-vertical"
@@ -18,7 +18,14 @@
     "special-offer-image special-offer-image special-offer-image special-offer-image"
     "footer footer footer footer"
     ;
-    grid-gap:0.2rem;
+    grid-gap:0.4rem;
+}
+
+.empty-sapce {
+    grid-area: empty-space;
+    background-color: khaki;
+    width: auto;
+    margin: auto;
 }
 
 .logo-nav {
@@ -36,7 +43,7 @@
 
 .search-bar {
     
-    border-radius: 1pc;
+    /* border-radius: 1pc; */
     border: none;
     width: 25rem;
     box-shadow: 1px 5px 10px lightgray;
@@ -75,13 +82,13 @@
     text-decoration-style: none;
 }
 
-.buttons-middle-nav {
+.buttons-middle-left-nav {
     /* background-color: yellowgreen; */
-    grid-area: buttons-middle-nav;
-    margin: auto;    
+    grid-area: buttons-middle-left-nav;
+    margin: auto;
 }
 
-.buttons-middle-nav ul {
+.buttons-middle-left-nav ul {
     /* background-color: red; */
     list-style: none;
     float: left;
@@ -89,23 +96,49 @@
     
 }
 
-.buttons-middle-nav ul li {
+.buttons-middle-left-nav ul li {
     /* background-color: blue; */
     display: inline;
     font-weight: 100;
     font-size: 16px;
-    margin:20px;
+    margin:10px;
     
 }
 
-.buttons-middle-nav ul li a {
+.buttons-middle-left-nav ul li a {
     /* background-color: yellow; */
     text-decoration: none;
     color: grey;
 }
 
+.buttons-middle-right-nav {
+    /* background-color: yellowgreen; */
+    grid-area: buttons-middle-right-nav;
+    margin: auto;
+}
 
+.buttons-middle-right-nav ul {
+    /* background-color: red; */
+    list-style: none;
+    float: left;
+    padding-left: 1px;
+    
+}
 
+.buttons-middle-right-nav ul li {
+    /* background-color: blue; */
+    display: inline;
+    font-weight: 100;
+    font-size: 16px;
+    margin:10px;
+    
+}
+
+.buttons-middle-right-nav ul li a {
+    /* background-color: yellow; */
+    text-decoration: none;
+    color: grey;
+}
 
 .newsletter-banner {
     background-color: skyblue;
@@ -152,7 +185,7 @@ footer {
     grid-area: footer;
 }
 
-@media only screen and (max-width: 750px) {
+@media only screen and (max-width: 800px) {
     .container {
         grid-template-columns: 1fr;
         grid-template-rows: 0.1fr 0.1fr  0.3fr 1.8fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.2fr;
@@ -172,12 +205,30 @@ footer {
         "footer"
         ;
     }
-    .logo-nav {
-        margin: auto;
-        
-        
+}
+
+@media only screen and (max-width: 1355px) {
+    .container {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 0.1fr 0.1fr 0.1fr 0.1fr  0.3fr 1.8fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.5fr 0.2fr;
+    grid-template-areas: 
+    "searchbar-nav searchbar-nav searchbar-nav searchbar-nav"
+    "logo-nav logo-nav buttons-right-nav buttons-right-nav"
+    "empty-sapce buttons-middle-left-nav buttons-middle-left-nav empty-space"
+    "empty-sapce buttons-middle-right-nav buttons-middle-right-nav empty-space"
+    "newsletter-banner newsletter-banner newsletter-banner newsletter-banner"
+    "hero-image-slideshow hero-image-slideshow hero-image-slideshow hero-image-slideshow"
+    "new-arrivals-image new-arrivals-image sofa-image-vertical stool-image-vertical"
+    "sofa-image-horizontal sofa-image-horizontal sofa-image-vertical stool-image-vertical"
+    "be-inspired-image be-inspired-image be-inspired-image be-inspired-image"
+    "be-inspired-image be-inspired-image be-inspired-image be-inspired-image"
+    "special-offer-image special-offer-image special-offer-image special-offer-image"
+    "special-offer-image special-offer-image special-offer-image special-offer-image"
+    "footer footer footer footer"
+    ; 
     }
-    .logo-nav a {
-      
+    .searchbar-nav {
+        /* width: 100%; */
+        
     }
 }
