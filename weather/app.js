@@ -70,6 +70,7 @@ function getWeather(latitude, longitude){
 }
 
 function displayWeather() {
+    console.log(weather.temperature.value);
     iconElement.innerHTML = `<img src="icons/${weather.iconId}.png"/>`;
     tempElement.innerHTML = `${weather.temperature.value}°<span>C</span>`;
     feelsLikeElement.innerHTML = `Feels like: ${weather.feelsLike.value}°<span>C</span>`;
@@ -99,7 +100,10 @@ function updateWallpapper() {
         favIcon.href = "/weather/img/rain.png"
     }
 
-    
+    if (weather.temperature.value < 1 || weather.feelsLike.value == 1) {
+        document.body.style.background = "#293251 url('https://images.unsplash.com/photo-1496340077100-9573d8b77463?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1962&q=80') no-repeat";
+        favIcon.href = "/weather/img/rain.png"
+    }
 }
 
 // C to F conversion
