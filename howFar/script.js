@@ -1,97 +1,39 @@
+var map = L.map('map').setView([51.505, -0.09], 13);
+var circles = [];
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
 
 
-let markers = [],
-    map,
-    zoom = 8,
-    latlong;
+function onMapClick(e) {
+    if (circles.length > 0) {
+        console.log("delete circle and any markers")
+        circles = [];
+    } else {
+        console.log("marker did not exist");
 
-    const notificationElement = document.querySelector(".errorModal")
+        setMapOnAll(null);
 
+        var marker = L.marker(e.latlng).addTo(map)
+            .bindPopup('You are here')
+            .openPopup();
 
-if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-    
-    navigator.geolocation.getCurrentPosition(success, showError, {timeout:10000});
-    
-    function initMap() {
-        const map = new google.maps.Map(document.getElementById("map"), {
-            zoom: 9,
-            center: latlong,
-        });
-        placeMarkerAndPanTo(latlong, map);
-    }
+        var circle = L.circle(e.latlng, {
+            color: 'green',
+            fillColor: '#green',
+            fillOpacity: 0.3,
+            radius: 5000
+        }).addTo(map);
+        circles.push(marker, circle);
 
-} else {
-    
-    function initMap() {
-        const map = new google.maps.Map(document.getElementById("map"), {
-            zoom: zoom,
-            center: { lat: 53.529154, lng: -7.797545 },
-        });
-        map.addListener("click", (e) => {
-            placeMarkerAndPanTo(e.latLng, map);
-        });
-    }
-    $(document).ready(function () {
-        $("#myModal").modal('show');
-    });
+    };
 }
-
-function success(pos) {
-    let cords = pos.coords;
-    latlong = {
-        lat: cords.latitude,
-        lng: cords.longitude
-    }
-    
-}
-
-function showError(error) { 
-    
-    alert(error.message);
-    function initMap() {
-        const map = new google.maps.Map(document.getElementById("map"), {
-            zoom: zoom,
-            center: { lat: 53.529154, lng: -7.797545 },
-        });
-        map.addListener("click", (e) => {
-            placeMarkerAndPanTo(e.latLng, map);
-        });
-    }
-    $(document).ready(function () {
-        $("#myModal").modal('show');
-    });
-}
-
-function placeMarkerAndPanTo(latLng, map) {
-    setMapOnAll(null);
-    map.zoom = 12;
-
-    const marker = new google.maps.Marker({
-        position: latLng,
-        map: map,
-    });
-
-    const circle = new google.maps.Circle({
-        map: map,
-        radius: 5000,
-        fillColor: '#008000',
-        strokeOpacity: 0,
-        fillOpacity: 0.3,
-    });
-
-    circle.bindTo('center', marker, 'position');
-    map.panTo(latLng);
-
-    markers.push(marker);
-    markers.push(circle);
-}
-
 function setMapOnAll(map) {
-    for (let i = 0; i < markers.length; i++) {
-        markers[i].setMap(map);
+    for (let i = 0; i < circles.length; i++) {
+        circles[i].setMap(map);
     }
-    markers = [];
+    circles = [];
 }
 
-
+map.on('click', onMapClick);
 
