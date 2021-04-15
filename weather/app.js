@@ -81,7 +81,7 @@ function displayWeather() {
 function updateWallpapper() {
     
     if (/cloud/.test(weather.description)) {
-        document.body.style.background = "#293251 url('https://images.unsplash.com/photo-1500740516770-92bd004b996e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1952&q=80') no-repeat";
+        document.body.style.background = "#293251 url('https://images.unsplash.com/photo-1529832393073-e362750f78b3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80') no-repeat";
         favIcon.href = "/weather/img/cloudy.png"
     }
 
