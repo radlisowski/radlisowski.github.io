@@ -15,7 +15,7 @@ function onMapClick(e) {
         setMapOnAll(null);
 
         var marker = L.marker(e.latlng).addTo(map)
-            .bindPopup('You are here')
+            .bindPopup('This is a 5 km radius from the point you have clicked')
             .openPopup();
 
         var circle = L.circle(e.latlng, {
