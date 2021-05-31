@@ -9,9 +9,9 @@ function onMapClick(e) {
     if (circles.length > 0) {
         console.log("delete circle and any markers")
         circles = [];
+       location.reload();
     } else {
         console.log("marker did not exist");
-
         setMapOnAll(null);
 
         var marker = L.marker(e.latlng).addTo(map)
@@ -25,11 +25,12 @@ function onMapClick(e) {
             radius: 5000
         }).addTo(map);
         circles.push(marker, circle);
+        
 
     };
 }
 function setMapOnAll(map) {
-    for (let i = 0; i < circles.length; i++) {
+    for (let i = 1; i < circles.length; i++) {
         circles[i].setMap(map);
     }
     circles = [];
