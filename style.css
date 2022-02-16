@@ -131,6 +131,26 @@ section#home {
     font-family: 'Montserrat', sans-serif;
 }
 
+#error-message {
+    display: none;
+    max-width: 400px;
+}
+
+#error-button {
+    background-color: red;
+    padding: 40px;
+}
+
+#success-message {
+    display: none;
+    max-width: 400px;
+}
+
+#success-button {
+    background-color: green;
+    padding: 60px;
+}
+
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) { 
     
