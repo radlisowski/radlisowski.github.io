@@ -7,8 +7,8 @@ const successButton = document.getElementById("success-button");
 const errorButton = document.getElementById("error-button");
 
 const loginButton = document.getElementById("signin-button");
-const username = "testUsername";
-const password = "testPassword";
+const username = "test";
+const password = "test";
 
 loginButton.addEventListener("click", function () {
     let enteredUsername = document.getElementById("username-field").value;
