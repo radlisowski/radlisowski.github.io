@@ -137,6 +137,7 @@ section#home {
 }
 
 #error-button {
+    display: none;
     background-color: red;
     padding: 40px;
 }
@@ -147,6 +148,7 @@ section#home {
 }
 
 #success-button {
+    display: none;
     background-color: green;
     padding: 60px;
 }
