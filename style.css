@@ -48,7 +48,11 @@ body {
 }
 
 .navbar ul li a:hover {
-    color: rgb(212, 109, 187);
+    color: rgb(15 157 88);
+}
+
+.navbar ul li p {
+    color: rgb(15 157 88);
 }
 
 .footer {
@@ -79,12 +83,13 @@ body {
 }
 
 .footer ul li a:hover {
-    color: rgb(212, 109, 187);
+    color: rgb(15 157 88);
 }
 
 .btn {
     background-color: #4285F4;
     margin-bottom: 1rem;
+    font-family: 'Roboto Mono', monospace;
 }
 
 .btn:hover {
@@ -110,7 +115,7 @@ section#home {
 }
 
 .card-body {
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Roboto Mono', monospace;
 }
 
 .cards {
@@ -119,6 +124,11 @@ section#home {
     margin-left: 40px;
     margin-right: 40px;
     margin-bottom: 4rem;  
+}
+
+.card-title {
+    
+    font-family: 'Montserrat', sans-serif;
 }
 
 /* Small devices (landscape phones, 576px and up) */
