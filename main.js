@@ -31,6 +31,14 @@ loginButton.addEventListener("click", function () {
     }
 });
 
+document.getElementById("password-field")
+    .addEventListener("keyup", function(event) {
+    event.preventDefault();
+    if (event.keyCode === 13) {
+        document.getElementById("signin-button").click();
+    }
+});
+
 errorMessage.addEventListener("click", function () {
     location.reload();
 });
