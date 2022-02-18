@@ -127,8 +127,11 @@ section#home {
 }
 
 .card-title {
-    
-    font-family: 'Montserrat', sans-serif;
+    font-family: 'Roboto Mono', monospace;
+}
+
+#login-form {
+    font-family: 'Roboto Mono', monospace;
 }
 
 #error-message {

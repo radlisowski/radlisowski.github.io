@@ -10,6 +10,7 @@ const loginButton = document.getElementById("signin-button");
 const username = "test";
 const password = "test";
 
+
 window.onload = function() {
     document.getElementById("username-field").focus();
   };
