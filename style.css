@@ -43,7 +43,7 @@ body {
 
 .navbar ul li {
     margin: 0 1rem;
-    padding: 1rem;
+    padding: 0.05rem;
 }
 
 .navbar ul li a {
@@ -153,7 +153,7 @@ section#home {
 .about {
     border-radius: 40px;
     background-color: rgba(2, 2, 2, 0.700);
-    max-width: 1024px;
+
     margin: auto;
     font-family: 'Roboto Mono', monospace;
 }
@@ -213,7 +213,13 @@ section#home {
         background: url('images/g4-background.png') no-repeat center;
     }
 
-    
+    .navbar ul li {
+
+        padding: 1rem;
+    }
+    .about {
+        min-width: 800px;
+    }
     
  }
 
@@ -227,6 +233,8 @@ section#home {
     .card {
         max-width: 18rem;
     }
+
+    
 
  }
 
