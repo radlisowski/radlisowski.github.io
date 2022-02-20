@@ -137,7 +137,7 @@ section#home {
 }
 
 .cards {
-    max-width: 1080px;
+    /* max-width: 1080px; */
     margin-top: 4rem;
     margin-left: 40px;
     margin-right: 40px;
@@ -199,6 +199,7 @@ section#home {
     background-color: green;
     /* padding: 60px; */
 }
+
 
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) { 
