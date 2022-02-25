@@ -200,6 +200,13 @@ section#home {
     /* padding: 60px; */
 }
 
+.card-footer {
+    /* position:absolute;                 
+    bottom:0; */
+
+
+}
+
 
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) { 
