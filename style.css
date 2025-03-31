@@ -117,7 +117,7 @@ section#home {
 .card {
     border: none;
     border-radius: 40px;
-    background-color: rgba(0, 0, 0, 0.900);
+    background-color: rgba(0, 0, 0, 0.800);
 }
 
 .card img{
@@ -160,7 +160,7 @@ section#home {
 
 .about h5 {
     margin-top: 1rem;
-    text-align: left;
+    text-align: center;
 
 }
 
