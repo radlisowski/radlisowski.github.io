@@ -74,6 +74,7 @@ body {
     list-style: none;
     width: 100%;
     justify-content: center;
+    
 }
 
 .footer ul li {
@@ -114,10 +115,18 @@ section#home {
     justify-content: center;
 }
 
+.col mb-4{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .card {
     border: none;
     border-radius: 40px;
     background-color: rgba(0, 0, 0, 0.800);
+    margin-bottom: auto;
+    
 }
 
 .card img{
@@ -133,7 +142,7 @@ section#home {
 .card-body {
     font-size: 0.9rem;
     font-family: 'Roboto Mono', monospace;
-   
+    
 }
 
 .cards {
@@ -198,13 +207,6 @@ section#home {
     display: none;
     background-color: green;
     /* padding: 60px; */
-}
-
-.card-footer {
-    /* position:absolute;                 
-    bottom:0; */
-
-
 }
 
 
