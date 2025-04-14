@@ -38,6 +38,40 @@
 					<br />
 					<div class="row row-cols-1 row-cols-md-3 g-4 mt-5 mb-1 ml-1 mr-1">
 						<div class="about text-white p-3 mb-5" mt-5>
+							<br />
+							<div class="date">14th April 2025</div>
+							<p>
+								In today's update, I focused on enhancing the test framework for our API by integrating a dynamic environment management, added test
+								structure, used the previously crated Pydantic model in test and introduced storage for constants. These changes aim to improve
+								maintainability and scalability as we continue to develop and test our application.
+							</p>
+							<h5>Test Structure</h5>
+							<p>
+								I refined the test structure to categorize tests into different endpoints and further subdivide them into positive and negative
+								scenarios. This organization allows us to cover a broad range of test cases efficiently and ensures comprehensive coverage of our API
+								functionalities. By structuring our tests this way, we can clearly identify the purpose of each test and focus on both expected
+								success conditions and potential failure points.
+							</p>
+							<h5>Creating User Tests with Pydantic</h5>
+							<p>
+								For testing the creation of a user via a POST request, I utilized Pydantic models to define the user schema. Pydantic provides data
+								validation and parsing, allowing us to ensure that all inputs conform to expected formats before the request is sent. This approach
+								not only improves test reliability but also helps catch errors early in the testing phase.
+							</p>
+							<h5>Constants Module</h5>
+							<p>
+								Additionally, to maintain a clean and organized framework, I introduced a Constants.py file. This module collects all constants that
+								remain unchanged throughout the tests, such as fixed parameter values. Centralizing constants ensures that our tests are easy to
+								update and understand, reducing the likelihood of errors caused by hardcoded values.
+							</p>
+						</div>
+					</div>
+
+					<a class="btn" href="#olderPost"> | older posts |</a>
+
+					<br />
+					<div id="olderPost" class="row row-cols-1 row-cols-md-3 g-4 mt-5 mb-5 ml-1 mr-1">
+						<div class="about text-white p-3 mb-5" mt-5>
 							<h1>Building a Forkable Pytest API Testing Framework</h1>
 							<br />
 							<div class="date">10th April 2025</div>
@@ -64,12 +98,7 @@
 								to future requirements which is the end goal.
 							</p>
 						</div>
-					</div>
 
-					<a class="btn" href="#olderPost"> | older posts |</a>
-
-					<br />
-					<div id="olderPost" class="row row-cols-1 row-cols-md-3 g-4 mt-5 mb-5 ml-1 mr-1">
 						<div class="about text-white p-3 mb-5" mt-5>
 							<div class="date">2nd April 2025</div>
 
