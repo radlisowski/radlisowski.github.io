@@ -33,48 +33,100 @@
 				</ul>
 			</nav>
 
-			<section>
+			<section id=blog>
 				<div class="container-fluid">
 					<br />
 					<div class="row row-cols-1 row-cols-md-3 g-4 mt-5 mb-1 ml-1 mr-1">
 						<div class="about text-white p-3 mb-5" mt-5>
 							<br />
-							<div class="date">14th April 2025</div>
+							<h2>Welcome to my blog!</h2>
+							<br />
+							<p>
+								Here, I share my thoughts and experiences as I navigate the world of software testing. My goal is to create a space
+								where I can document my learning journey, share insights, and connect with others in the tech community. Whether you're a fellow
+								tester, or just someone interested in technology, I hope you find something valuable here. Let's explore the fascinating
+								world of software together! Have a question? message me on <a href="https://www.linkedin.com/in/radosław-lisowski-7ba5b048" target="_blank">linkedin</a>.
+							</p>
+							<br />
+						</div>
+
+
+
+						<div class="about text-white p-3 mb-5" mt-5>
+
+							<h2>Building a Forkable Pytest API Testing Framework</h3>
+							<br><br>
+			
+							<h5 class="date">17th April 2025</h5>
+
+							<p>
+								Enhancing Testing Efficiency with Pytest Fixtures and Hooks: In a recent update, I've introduced several new features to our testing
+								framework that streamline and enhance our test processes. The star of this update is undoubtedly the conftest.py file, which acts as a
+								central hub for managing test fixtures. Here's a glimpse into the changes and their benefits:
+							</p>
+							<p>
+								Pytest Fixtures: Simplifying Setup Fixtures in pytest are a powerful mechanism that allows you to set up a specific environment for
+								each test to run in. They enable the execution of setup code before your tests run and can also include teardown logic for cleanup
+								after tests have completed. By defining shared logic in fixtures, you can maintain clean, organized tests without redundant code.
+								They’re incredibly versatile, supporting parameterization, dependency injection, and fixture scoping to control when and how
+								frequently they are executed.
+							</p>
+							<p>
+								Database Connection Fixture: In the current setup, conftest.py includes a fixture that establishes a connection to our database before
+								tests are executed. This ensures that when I need to validate the response payloads against entries in the database, the connection is
+								primed and ready to go. This setup not only saves time but also increases reliability by ensuring that database resources are always
+								correctly initialized for each test.
+							</p>
+							<p>
+								Post-Test Cleanup: The Database Hook Another significant feature implemented is a database cleanup hook. By using pytest decorators, I
+								can now mark specific tests for cleanup. After these tests run—successfully or not—all documents in the database are removed. This
+								approach ensures a clean environment before each test session and prevents interference from stale data, enhancing test accuracy and
+								integrity.
+							</p>
+							<p>
+								Future Plans: Leveraging Fixtures Further Looking forward, I plan to extend the use of fixtures to include user creation pre-tests.
+								This will allow us to test GET endpoints more effectively by ensuring that the necessary users are in place before tests run. This
+								capability enhances our ability to test state-dependent operations with confidence, ensuring that the application behaves as expected
+								under realistic conditions.
+							</p>
+							<p>
+								Assertions in a Separate File: Improving Readability To further improve the organization of our tests, I've isolated assertions into a
+								separate file. This change keeps individual test scripts cleaner and easier to read, thereby accelerating the process of creating new
+								tests. By centralizing common assertions, we not only maintain consistency but also reduce the likelihood of errors across test cases.
+							</p>
+						</div>
+
+
+
+						<div class="about text-white p-3 mb-5" mt-5>
+							<h5 class="date">14th April 2025</h5>
 							<p>
 								In today's update, I focused on enhancing the test framework for our API by integrating a dynamic environment management, added test
 								structure, used the previously crated Pydantic model in test and introduced storage for constants. These changes aim to improve
 								maintainability and scalability as we continue to develop and test our application.
 							</p>
-							<h5>Test Structure</h5>
 							<p>
-								I refined the test structure to categorize tests into different endpoints and further subdivide them into positive and negative
-								scenarios. This organization allows us to cover a broad range of test cases efficiently and ensures comprehensive coverage of our API
-								functionalities. By structuring our tests this way, we can clearly identify the purpose of each test and focus on both expected
-								success conditions and potential failure points.
+								Test Structure: I refined the test structure to categorize tests into different endpoints and further subdivide them into positive and
+								negative scenarios. This organization allows us to cover a broad range of test cases efficiently and ensures comprehensive coverage of
+								our API functionalities. By structuring our tests this way, we can clearly identify the purpose of each test and focus on both
+								expected success conditions and potential failure points.
 							</p>
-							<h5>Creating User Tests with Pydantic</h5>
 							<p>
-								For testing the creation of a user via a POST request, I utilized Pydantic models to define the user schema. Pydantic provides data
-								validation and parsing, allowing us to ensure that all inputs conform to expected formats before the request is sent. This approach
-								not only improves test reliability but also helps catch errors early in the testing phase.
+								Creating User Tests with Pydantic: For testing the creation of a user via a POST request, I utilized Pydantic models to define the
+								user schema. Pydantic provides data validation and parsing, allowing us to ensure that all inputs conform to expected formats before
+								the request is sent. This approach not only improves test reliability but also helps catch errors early in the testing phase.
 							</p>
-							<h5>Constants Module</h5>
 							<p>
-								Additionally, to maintain a clean and organized framework, I introduced a Constants.py file. This module collects all constants that
-								remain unchanged throughout the tests, such as fixed parameter values. Centralizing constants ensures that our tests are easy to
-								update and understand, reducing the likelihood of errors caused by hardcoded values.
+								<strong>Constants Module:</strong> Additionally, to maintain a clean and organized framework, I introduced a Constants.py file. This
+								module collects all constants that remain unchanged throughout the tests, such as fixed parameter values. Centralizing constants
+								ensures that our tests are easy to update and understand, reducing the likelihood of errors caused by hardcoded values.
 							</p>
 						</div>
-					</div>
 
-					<a class="btn" href="#olderPost"> | older posts |</a>
 
-					<br />
-					<div id="olderPost" class="row row-cols-1 row-cols-md-3 g-4 mt-5 mb-5 ml-1 mr-1">
+
 						<div class="about text-white p-3 mb-5" mt-5>
-							<h1>Building a Forkable Pytest API Testing Framework</h1>
-							<br />
-							<div class="date">10th April 2025</div>
+							<h5 class="date">10th April 2025</h5>
 							<p>
 								After setting up a basic FastAPI application with GET and POST endpoints, it's time to lay the groundwork for a strong and effective
 								testing framework. Testing not only ensures that our API works as intended but also provides a safety net for future development. In
@@ -99,8 +151,10 @@
 							</p>
 						</div>
 
+
+
 						<div class="about text-white p-3 mb-5" mt-5>
-							<div class="date">2nd April 2025</div>
+							<h5 class="date">2nd April 2025</h5>
 
 							<p>
 								I feel that the API automation framework sounds quite intimidating, especially for someone with little coding experience. Would it be
@@ -119,6 +173,9 @@
 								next... and then well… and then we will see.
 							</p>
 						</div>
+
+
+
 					</div>
 				</div>
 			</section>
