@@ -45,7 +45,7 @@
 								Here, I share my thoughts and experiences as I navigate the world of software testing. My goal is to create a space
 								where I can document my learning journey, share insights, and connect with others in the tech community. Whether you're a fellow
 								tester, or just someone interested in technology, I hope you find something valuable here. Let's explore the fascinating
-								world of software together! Have a question? message me on <a href="https://www.linkedin.com/in/radosław-lisowski-7ba5b048" target="_blank">linkedin</a>.
+								world of software together! Have a question... message me on <a href="https://www.linkedin.com/in/radosław-lisowski-7ba5b048" target="_blank">linkedin</a>.
 							</p>
 							<br />
 						</div>
@@ -65,7 +65,7 @@
 								central hub for managing test fixtures. Here's a glimpse into the changes and their benefits:
 							</p>
 							<p>
-								Pytest Fixtures: Simplifying Setup Fixtures in pytest are a powerful mechanism that allows you to set up a specific environment for
+								Pytest Fixtures: Fixtures in pytest are a powerful mechanism that allows you to set up a specific environment for
 								each test to run in. They enable the execution of setup code before your tests run and can also include teardown logic for cleanup
 								after tests have completed. By defining shared logic in fixtures, you can maintain clean, organized tests without redundant code.
 								They’re incredibly versatile, supporting parameterization, dependency injection, and fixture scoping to control when and how
@@ -78,13 +78,13 @@
 								correctly initialized for each test.
 							</p>
 							<p>
-								Post-Test Cleanup: The Database Hook Another significant feature implemented is a database cleanup hook. By using pytest decorators, I
+								Post-Test Cleanup: Another significant feature implemented is a database cleanup hook. By using pytest decorators, I
 								can now mark specific tests for cleanup. After these tests run—successfully or not—all documents in the database are removed. This
 								approach ensures a clean environment before each test session and prevents interference from stale data, enhancing test accuracy and
 								integrity.
 							</p>
 							<p>
-								Future Plans: Leveraging Fixtures Further Looking forward, I plan to extend the use of fixtures to include user creation pre-tests.
+								Future Plans: Further Looking forward, I plan to extend the use of fixtures to include user creation pre-tests.
 								This will allow us to test GET endpoints more effectively by ensuring that the necessary users are in place before tests run. This
 								capability enhances our ability to test state-dependent operations with confidence, ensuring that the application behaves as expected
 								under realistic conditions.
