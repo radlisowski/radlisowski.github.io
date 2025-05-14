@@ -38,6 +38,7 @@ This project employs [Playwright](https://playwright.dev/) for end-to-end testin
 The testing workflow is defined in `.github/workflows/playwright.yml` and includes the following steps:
 
 1. **Checkout Repository**: Retrieves the latest code from the repository.
+2. **Start official Playwright container**: Spins up a Playwright docker container to execuit the tests in.
 2. **Setup Node.js**: Configures the Node.js environment.
 3. **Install Dependencies**: Installs necessary packages using `npm ci`.
 4. **Install Playwright Browsers**: Sets up required browsers for testing.
@@ -59,51 +60,45 @@ on:
   push:
     branches:
       - master
+  pull_request:
+    branches:
+      - master
 
 jobs:
   # Main test job that executes Playwright tests
   # This job handles the entire testing process from setup to execution
   test:
-    # Specifies the runner environment - using latest Ubuntu version
-    # Ubuntu is chosen for its stability and compatibility with Node.js
+    # Use the official Playwright Docker image
     runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.52.0-jammy
 
     steps:
       # Checks out the main repository containing the application code
-      # Uses actions/checkout@v2 to clone the repository into the workflow's workspace
       - name: Checkout Portfolio Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       
       # Checks out a separate repository containing Playwright test files
       # Specifies custom repository path and location for test files
       # This allows separation of test code from application code
       - name: Checkout Playwright Tests Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           repository: radlisowski/Playwright-E2E-Automation
           path: playwright-tests
       
-      # Configures Node.js environment for running tests
-      # Uses Node.js version 18 for optimal compatibility with Playwright
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '18'
-      
-      # Installs all required dependencies and Playwright browsers
+      # Installs all required dependencies for Playwright tests
       # npm ci ensures clean and consistent installation
-      # playwright install downloads required browser binaries
-      - name: Install Dependencies and Playwright
-        working-directory: ./playwright-tests/  # Ensure this points to a directory
-        run: |
-          npm ci
-          npx playwright install --with-deps
+      - name: Install Dependencies
+        working-directory: ./playwright-tests
+        run: npm ci
+      
+      - name: Set Environment for Firefox
+        run: echo "HOME=/root" >> $GITHUB_ENV
       
       # Executes all Playwright tests in the test suite
       # Runs in the playwright-tests directory where test files are located
+
       - name: Run Playwright Tests
         working-directory: ./playwright-tests
-        run: npx playwright test
-        
-        
-        
+        run: npx playwright test  
