@@ -1,0 +1,38 @@
+name: Playwright Tests
+
+on:
+  push:
+    branches:
+      - main  # This specifies that the action should run on commits to the main branch of your portfolio repository.
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the portfolio repository
+      - name: Checkout Portfolio Repo
+        uses: actions/checkout@v2
+
+      # Clone the Playwright tests repository
+      - name: Checkout Playwright Tests Repo
+        uses: actions/checkout@v2
+        with:
+          repository: radlisowski/Playwright-E2E-Automation
+          path: playwright-tests  # Clone into a specific directory
+
+      # Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'  
+
+      # Install dependencies for Playwright tests
+      - name: Install Dependencies
+        run: npm install
+        working-directory: ./playwright-tests/tests/portfolio_page_tests.spec.js  
+
+      # Run Playwright tests
+      - name: Run Playwright Tests
+        run: npx playwright test
+        working-directory: ./playwright-tests/tests/portfolio_page_tests.spec.js  
