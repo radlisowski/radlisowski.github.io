@@ -44,8 +44,6 @@ The testing workflow is defined in `.github/workflows/playwright.yml` and includ
 ### 📝 Sample Workflow Configuration
 
 ```yaml
-name: Playwright Tests
-
 # Name of the workflow as it will appear in GitHub Actions UI
 # This workflow runs Playwright E2E tests for the application
 # Performs automated testing of login functionality and UI components
@@ -56,9 +54,6 @@ name: Playwright E2E Test Suite
 # Ensures complete test coverage for all code changes
 on:
   push:
-    branches:
-      - master
-  pull_request:
     branches:
       - master
 
@@ -105,13 +100,7 @@ jobs:
       # Runs in the playwright-tests directory where test files are located
       - name: Run Playwright Tests
         working-directory: ./playwright-tests
-        run: |
-          npx playwright test --reporter=html,list
-
-      - name: Upload Test Results
-        if: always()
-        uses: actions/upload-artifact@v2
-        with:
-          name: playwright-test-results
-          path: playwright-tests/playwright-report
-          retention-days: 14
+        run: npx playwright test
+        
+        
+        
