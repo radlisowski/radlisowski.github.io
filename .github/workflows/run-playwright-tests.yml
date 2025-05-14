@@ -48,7 +48,13 @@ jobs:
         working-directory: ./playwright-tests/  # Ensure this points to a directory
         run: |
           npm ci
-          npx playwright install --with-deps
+          npx playwright install
+
+      - name: Cache Playwright browsers
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ hashFiles('**/package-lock.json') }}
 
       # Executes all Playwright tests in the test suite
       # Runs in the playwright-tests directory where test files are located

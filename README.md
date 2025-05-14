@@ -1,5 +1,6 @@
 # radlisowski.github.io
 
+
 Welcome to my personal portfolio website! This project showcases my work, projects, and experiments in testing and 
 web development, including integrations with GitHub Actions and Playwright for automated testing.
 
@@ -27,6 +28,8 @@ The repository is organized as follows:
 - **Automated Testing**: Integrates Playwright tests via GitHub Actions for continuous integration.
 
 ## 🧪 Playwright Testing with GitHub Actions
+
+[![Playwright E2E Test Suite](https://github.com/radlisowski/radlisowski.github.io/actions/workflows/run-playwright-tests.yml/badge.svg)](https://github.com/radlisowski/radlisowski.github.io/actions/workflows/run-playwright-tests.yml)
 
 This project employs [Playwright](https://playwright.dev/) for end-to-end testing, integrated seamlessly with GitHub Actions to ensure code reliability and performance.
 
