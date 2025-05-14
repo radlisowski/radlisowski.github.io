@@ -43,15 +43,12 @@ jobs:
         working-directory: ./playwright-tests
         run: npm ci
       
-      # Cache Playwright browsers to avoid redownloading on every run
-      - name: Cache Playwright Browsers
-        uses: actions/cache@v3
-        with:
-          path: /root/.cache/ms-playwright
-          key: ${{ runner.os }}-playwright-${{ hashFiles('**/package-lock.json') }}
+      - name: Set Environment for Firefox
+        run: echo "HOME=/root" >> $GITHUB_ENV
       
       # Executes all Playwright tests in the test suite
       # Runs in the playwright-tests directory where test files are located
+
       - name: Run Playwright Tests
         working-directory: ./playwright-tests
         run: npx playwright test
