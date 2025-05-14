@@ -1,44 +1,24 @@
-# Name of the workflow as it will appear in GitHub Actions UI
-# This workflow runs Playwright E2E tests for the application
-# Performs automated testing of login functionality and UI components
-name: Playwright E2E Test Suite
+name: Playwright Tests
 
-# Defines the events that trigger this workflow
-# Runs on push and pull requests to master branch
-# Ensures complete test coverage for all code changes
 on:
   push:
     branches:
       - master
-  pull_request:
-    branches:
-      - master
 
 jobs:
-  # Main test job that executes Playwright tests
-  # This job handles the entire testing process from setup to execution
   test:
-    # Specifies the runner environment - using latest Ubuntu version
-    # Ubuntu is chosen for its stability and compatibility with Node.js
     runs-on: ubuntu-latest
 
     steps:
-      # Checks out the main repository containing the application code
-      # Uses actions/checkout@v2 to clone the repository into the workflow's workspace
       - name: Checkout Portfolio Repository
         uses: actions/checkout@v2
 
-      # Checks out a separate repository containing Playwright test files
-      # Specifies custom repository path and location for test files
-      # This allows separation of test code from application code
       - name: Checkout Playwright Tests Repository
         uses: actions/checkout@v2
         with:
           repository: radlisowski/Playwright-E2E-Automation
           path: playwright-tests
 
-      # Configures Node.js environment for running tests
-      # Uses Node.js version 18 for optimal compatibility with Playwright
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
@@ -67,3 +47,5 @@ jobs:
           name: playwright-test-results
           path: playwright-tests/playwright-report
           retention-days: 14
+
+
