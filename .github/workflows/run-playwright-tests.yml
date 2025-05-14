@@ -30,7 +30,7 @@ jobs:
 
       - name: Install Playwright
         working-directory: ./playwright-tests/  # Ensure this points to a directory
-        run: npx playwright install
+        run: npm init playwright@latest
 
       - name: Run Playwright Tests
         working-directory: ./playwright-tests  # Adjust to ensure this path is correct
