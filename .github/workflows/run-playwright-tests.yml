@@ -3,7 +3,7 @@ name: Playwright Tests
 on:
   push:
     branches:
-      - main  # This specifies that the action should run on commits to the main branch.
+      - master  # This specifies that the action should run on commits to the main branch.
 
 jobs:
   test:
