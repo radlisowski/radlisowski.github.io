@@ -30,4 +30,4 @@ jobs:
 
       - name: Run Playwright Tests
         working-directory: ./playwright-tests  # Adjust to ensure this path is correct
-        run: npx playwright test --list
+        run: npx playwright test
