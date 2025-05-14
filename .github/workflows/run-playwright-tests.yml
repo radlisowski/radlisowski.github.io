@@ -24,13 +24,11 @@ jobs:
         with:
           node-version: '18'
 
-      - name: Install npm
+      - name: Install Dependencies and Playwright
         working-directory: ./playwright-tests/  # Ensure this points to a directory
-        run: npm install
-
-      - name: Install Dependencies
-        working-directory: ./playwright-tests/  # Ensure this points to a directory
-        run: npm install
+        run: |
+          npm ci
+          npx playwright install --with-deps
 
       - name: Run Playwright Tests
         working-directory: ./playwright-tests  # Adjust to ensure this path is correct
