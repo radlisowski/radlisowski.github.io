@@ -29,13 +29,15 @@ The repository is organized as follows:
 
 ## 🧪 Playwright Testing with GitHub Actions
 
-[![Playwright E2E Test Suite](https://github.com/radlisowski/radlisowski.github.io/actions/workflows/run-playwright-tests.yml/badge.svg)](https://github.com/radlisowski/radlisowski.github.io/actions/workflows/run-playwright-tests.yml)
+[![Playwright & Cypress E2E Test Suites](https://github.com/radlisowski/radlisowski.github.io/actions/workflows/run-playwright-tests.yml/badge.svg)](https://github.com/radlisowski/radlisowski.github.io/actions/workflows/run-playwright-tests.yml)
+[![run-cypress-tests.yml](https://github.com/radlisowski/radlisowski.github.io/actions/workflows/run-cypress-tests.yml/badge.svg)](https://github.com/radlisowski/radlisowski.github.io/actions/workflows/run-cypress-tests.yml)
 
-This project employs [Playwright](https://playwright.dev/) for end-to-end testing, integrated seamlessly with GitHub Actions to ensure code reliability and performance.
+This project employs [Playwright](https://playwright.dev/) and [Playwright](https://cypress.io/)for end-to-end testing, 
+integrated seamlessly with GitHub Actions to ensure code reliability and performance.
 
 ### 🔄 Workflow Overview
 
-The testing workflow is defined in `.github/workflows/playwright.yml` and includes the following steps:
+The testing workflow is defined in `.github/workflows/run-playwright-tests.yml` and includes the following steps:
 
 1. **Checkout Repository**: Retrieves the latest code from the repository.
 2. **Start official Playwright container**: Spins up a Playwright docker container to execuit the tests in.
@@ -44,6 +46,10 @@ The testing workflow is defined in `.github/workflows/playwright.yml` and includ
 4. **Install Playwright Browsers**: Sets up required browsers for testing.
 5. **Run Tests**: Executes Playwright tests using `npx playwright test`.
 6. **Upload Test Artifacts**: Stores test reports and artifacts for review.
+
+Similarly, from Cypress the workflow is the same with a difference of not using the containerized 
+image for Cypress env. Using standard Ubuntu image and installing dependencies. 
+Cypress seems to play nice with it out of the box.
 
 ### 📝 Sample Workflow Configuration
 
