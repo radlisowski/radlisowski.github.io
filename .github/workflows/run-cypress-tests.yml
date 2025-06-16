@@ -1,0 +1,36 @@
+name: run-cypress-tests.yml
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+
+jobs:
+# Main test job that executes Cypress tests
+# This job handles the entire testing process from setup to execution
+
+  test:
+    # Use the official Playwright Docker image
+    runs-on: ubuntu-latest
+
+    steps:
+      # to be tested
+      - name: Checkout Portfolio Repository
+        uses: actions/checkout@v3
+
+      # testing with
+      - name: Checkout Cypress Tests Repository
+        uses: actions/checkout@v3
+        with:
+          repository: radlisowski/login-test-cypress
+          path: cypress-tests
+
+      - name: Install Dependencies
+        working-directory: ./cypress-tests
+        run: npm ci
+
+      - name: Run Cypress Tests
+        working-directory: ./cypress-tests
+        run: npx cypress run
