@@ -1,4 +1,4 @@
-name: Cypress E2E Test Suite.yml
+name: Cypress E2E Test Suite
 on:
   push:
     branches:
