@@ -2,6 +2,37 @@
 <html lang="en">
 <head>
     <style>
+        .gradient-heading {
+            background: linear-gradient(90deg, #4286f5 0%, #42e695 30%, #ff99bc 70%, #ff006a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+    </style>
+    <style>
+        @keyframes breathingColor {
+            0% {
+                color: rgb(66, 135, 245);
+            }
+            50% {
+                color: rgb(255, 99, 188);
+            }
+            100% {
+                color: rgb(66, 135, 245);
+            }
+        }
+        .breathing-link {
+            transition: color 0.3s;
+            font-weight: 600;
+            font-size: 1.1em;
+            text-decoration: none;
+        }
+        .breathing-link:hover {
+            animation: breathingColor 2s ease-in-out;
+        }
+    </style>
+    <style>
         #bg-canvas {
             position: fixed;
             top: 0;
@@ -98,12 +129,10 @@
     <!-- Removed misplaced <style> tag from .content -->
     <nav class="navbar">
         <ul>
-            <li><a href="index.html">|home|</a></li>
-            <li><a href="projects.html">|projects|</a></li>
-            <li>
-                <a href="blog.html"><p>|blog|</p></a>
-            </li>
-            <li><a href="about.html">|about|</a></li>
+            <li><a class="breathing-link" href="index.html">home</a></li>
+            <li><a class="breathing-link" href="projects.html">projects</a></li>
+            <li><a class="breathing-link" href="blog.html">blog</a></li>
+            <li><a class="breathing-link" href="about.html">about</a></li>
         </ul>
     </nav>
 
@@ -113,11 +142,12 @@
             <div class="row" style="max-width: 1200px; margin: auto;">
                 <div class="col-12">
                     <!-- Cypress Blog Content Start -->
-                    <h2 class="blog-title">
+                    <h2 class="blog-title gradient-heading">
                         <i class="fas fa-vial mr-2"></i>
                         Cypress E2E
                     </h2>
-                    <br/><br/><br/>
+                    <!-- Reduced spacing below heading for consistency -->
+                    <br/>
                     <div class="about text-white p-3 mb-3" id="post-cypress-june">
                         <h5 class="date text-muted mb-4"><i class="far fa-calendar-alt mr-2"></i>18th June 2025</h5>
                         <p class="blog-content mb-4">
@@ -187,9 +217,8 @@
 
     <nav class="footer">
         <ul>
-            <li><a href="https://github.com/radlisowski" target="_blank">| github |</a></li>
-            <li><a href="login.html" target="_blank">|</a></li>
-            <li><a href="https://www.linkedin.com/in/radosław-lisowski-7ba5b048" target="_blank">| linkedin |</a></li>
+            <li><a class="breathing-link" href="https://github.com/radlisowski" target="_blank">github</a></li>
+            <li><a class="breathing-link" href="https://www.linkedin.com/in/radosław-lisowski-7ba5b048" target="_blank">linkedin</a></li>
         </ul>
     </nav>
 </div>
