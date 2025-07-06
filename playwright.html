@@ -18,6 +18,68 @@
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;402&display=swap" rel="stylesheet"/>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@138;427&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <style>
+        /* Sticky sidebar for desktop */
+        @media (min-width: 992px) {
+            .toc-sidebar {
+                position: sticky;
+                top: 160px; /* Increased from 100px to align with first post body */
+                max-height: 80vh;
+                overflow-y: auto;
+                background: rgba(17,17,17,0.85); /* semi-transparent black */
+                color: #fff;
+                border-radius: 8px;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+                padding: 1.5rem 1rem;
+                margin-left: 2rem;
+            }
+            .toc-sidebar .nav-link {
+                color: #fff;
+            }
+            .toc-sidebar .nav-link.active, .toc-sidebar .nav-link:focus, .toc-sidebar .nav-link:hover {
+                color: #ffd700;
+                background: none;
+            }
+        }
+        /* Floating button for mobile */
+        @media (max-width: 991.98px) {
+            .toc-fab {
+                position: fixed;
+                bottom: 24px;
+                right: 24px;
+                z-index: 1050;
+                background: black;
+                color: #fff;
+                border-radius: 50%;
+                width: 56px;
+                height: 56px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+                font-size: 1.7rem;
+                border: none;
+            }
+        }
+        /* Modal TOC for mobile */
+        .modal-content#tocModalContent, #tocModal .modal-content {
+            background: #111;
+            color: #fff;
+        }
+        #tocModal .nav-link {
+            color: #fff;
+        }
+        #tocModal .nav-link.active, #tocModal .nav-link:focus, #tocModal .nav-link:hover {
+            color: green;
+            background: none;
+        }
+        .toc-date {
+            display: block;
+            font-size: 0.85em;
+            color: #bbb;
+            margin-top: 2px;
+        }
+    </style>
 </head>
 <body>
 <div class="content">
@@ -31,123 +93,99 @@
             <li><a href="about.html">|about|</a></li>
         </ul>
     </nav>
-    <section id=blog>
+    <section id="blog">
         <div class="container-fluid">
-            <br/>
-            <br/>
-            <br/>
-            <div class="row row-cols-1 g-2 mt-5 mb-1 ml-1 mr-1 m-auto" style="max-width: 1200px;">
-                <div class="about text-white p-3 mb-3">
-                    <h2 class="blog-title">
-                        <i class="fas fa-sync-alt mr-2"></i>
-                        Playwright E2E
-                    </h2>
+            <br/><br/><br/>
+            <div class="row" style="max-width: 1200px; margin: auto;">
+                <div class="col-12 col-lg-9">
+                    <div class="about text-white p-3 mb-3">
+                        <h2 class="blog-title">
+                            <i class="fas fa-sync-alt mr-2"></i>
+                            Playwright E2E
+                        </h2>
+                    </div>
+                    <!-- Post 1 -->
+                    <div class="about text-white p-3 mb-3" id="post-pom">
+                        <h5 class="date text-muted mb-4"><i class="far fa-calendar-alt mr-2"></i>18th May 2025 (latest)</h5>
+                        <p class="blog-content mb-4">
+                            <p>Embracing Page Object Model (POM) for Comprehensive Testing</p>
+                            <p>In the latest update to my testing framework, I've implemented a robust suite of tests designed to validate the integrity and functionality of every page, along with all objects and links. By employing the Page Object Model (POM), I've not only enhanced test coverage but also improved the maintainability and scalability of the testing process.</p>
+                            <p>Why Page Object Model (POM)?</p>
+                            <p>The Page Object Model is a design pattern that offers a structured approach to organizing test code by encapsulating page interaction logic in dedicated classes, known as page objects. This pattern helps in several ways:</p>
+                            <p>Reusability</p>
+                            <p> Common test code is centralized within page objects, allowing it to be reused across multiple test cases. Clarity: By separating the test logic from the underlying page interactions, tests are more readable and easier to understand.</p>
+                            <p>Maintainability</p>
+                            <p>Changes to the UI only require updates in the corresponding page object, minimizing the impact on tests.</p>
+                            <p>The integration of the Page Object Model into my test framework has proven to be a game-changer in terms of efficiency and reliability. By focusing on modularity and reusability, I've streamlined the process of creating detailed and effective test cases. This update has not only fortified my testing strategy but also laid down a scalable foundation for future enhancements, ensuring that the quality of my applications continues to soar.</p>
+                        </p>
+                    </div>
+                    <!-- Post 2 -->
+                    <div class="about text-white p-3 mb-3" id="post-gha">
+                        <h5 class="date text-muted mb-4"><i class="far fa-calendar-alt mr-2"></i>15th May 2025</h5>
+                        <p class="blog-content mb-4">
+                            <p>Integrating Playwright with My Portfolio</p>
+                            <p>A GitHub Actions Exploration In my latest update, the focus shifted towards seamlessly integrating Playwright test automation with my portfolio page using GitHub Actions. This experience opened up the vast realm of Continuous Integration (CI) workflows available through GitHub Actions, proving to be an insightful journey into automation and efficiency.</p>
+                            <p>Streamlining with Docker</p>
+                            <p>To successfully implement this integration, I leveraged the official Playwright Docker container from Docker Hub, a choice that significantly simplified dependency management. Initially, I was manually installing dependencies, which proved time-consuming and prone to errors when attempting optimizations. However, Docker provided a streamlined solution, housing all necessary dependencies in a concise image, thus accelerating the build process and mitigating complexity.</p>
+                            <p>Faster Builds, Simplified Processes</p>
+                            <p>By employing the Docker container, not only did I achieve dependable builds, but the process also became considerably faster and more straightforward. This allowed me to focus on orchestrating tests rather than managing nuanced dependency installations, enhancing the overall workflow efficiency.</p>
+                            <p>Lessons and Fascination</p>
+                            <p>The transition to this Docker-based setup demonstrated the power of reduced complexity and improved speed in builds. The synergy between Docker and GitHub Actions provided a practical, real-world application of CI principles, a fascinating outcome that displayed the benefits of automated testing pipelines.</p>
+                            <p>Through this exploration, I gained valuable insights into the integration of automation tools, improving not just my project’s reliability, but my development practices as a whole. This endeavor sheds light on the exquisite potential of automated workflows, leaving me eager to continue exploring the ocean of possibilities offered by GitHub Actions and related technologies.</p>
+                        </p>
+                    </div>
+                    <!-- Post 3 -->
+                    <div class="about text-white p-3 mb-3" id="post-cd">
+                        <hr class="blog-separator my-2">
+                        <h5 class="date text-muted mb-4"><i class="far fa-calendar-alt mr-2"></i>14th May 2025</h5>
+                        <p class="blog-content mb-4">
+                            <p>Embracing Playwright</p>
+                            <p>A Powerful Tool for Modern Testing In the world of web development, Playwright is rapidly gaining popularity—and not just because of Microsoft's significant backing. Its robust features make it an outstanding choice for developers seeking a reliable testing framework. Having used Playwright for the past two years at work, I’ve witnessed firsthand its capabilities, so I decided to leverage this tool to build a comprehensive set of tests for my portfolio website, supporting Continuous Deployment (CD).</p>
+                            <p>The plan is</p>
+                            <p>1. Foundation with Simple Tests: The first step involves setting up a basic suite of tests. Establishing a solid foundation is crucial, as it lays the groundwork for more complex test cases down the line. These initial tests will ensure that the core functionalities of the website remain robust as new features are added.</p>
+                            <p>2. GitHub Actions Integration: By integrating these tests with GitHub Actions, I aim to automate the testing process, allowing tests to run automatically whenever changes are committed. This setup will not only save time but also enhance reliability, ensuring that new updates don’t inadvertently break existing functionality. </p>
+                        </p>
+                    </div>
                 </div>
-                <!--Next article-->
-                <div class="about text-white p-3 mb-3">
-                    <h5 class="date text-muted mb-4"><i class="far fa-calendar-alt mr-2"></i>18th May 2025</h5>
-
-                    <p class="blog-content mb-4">
-                    <p>Embracing Page Object Model (POM) for Comprehensive Testing</p>
-                    <p>In the latest update to my testing framework, I've implemented a robust suite of tests designed
-                        to validate the integrity and functionality of every page, along with all objects and links. By
-                        employing the Page Object Model (POM), I've not only enhanced test coverage but also
-                        improved the maintainability and scalability of the testing process.</p>
-
-                    <p>Why Page Object Model (POM)?</p>
-                    <p>The Page Object Model is a design pattern that offers a structured approach to organizing test
-                        code by encapsulating page interaction logic in dedicated classes, known as page objects. This
-                        pattern helps in several ways:</p>
-
-
-                    <p>Reusability</p>
-                    <p> Common test code is centralized within page objects, allowing it to be reused
-                        across multiple test cases.
-                        Clarity: By separating the test logic from the underlying page interactions, tests are more
-                        readable and easier to understand.</p>
-
-                    <p>Maintainability</p>
-                    <p>Changes to the UI only require updates in the corresponding page object,
-                        minimizing the impact on tests.</p>
-
-                    <p>The integration of the Page Object Model into my test framework has proven to be a game-changer
-                        in terms of efficiency and reliability. By focusing on modularity and reusability, I've
-                        streamlined the process of creating detailed and effective test cases. This update has not only
-                        fortified my testing strategy but also laid down a scalable foundation for future enhancements,
-                        ensuring that the quality of my applications continues to soar.</p>
-
+                <!-- Desktop TOC -->
+                <div class="d-none d-lg-block col-lg-3">
+                    <nav class="toc-sidebar">
+                        <h6 class="text-uppercase font-weight-bold mb-3">Navigation</h6>
+                        <ul class="nav flex-column">
+                            <li class="nav-item"><a class="nav-link" href="#post-pom">Page Object Model (POM)<span class="toc-date">18th May 2025</span></a></li>
+                            <li class="nav-item"><a class="nav-link" href="#post-gha">Integrating Playwright with Portfolio<span class="toc-date">15th May 2025</span></a></li>
+                            <li class="nav-item"><a class="nav-link" href="#post-cd">Embracing Playwright<span class="toc-date">14th May 2025</span></a></li>
+                        </ul>
+                    </nav>
                 </div>
-                <!--Next article-->
-                <div class="about text-white p-3 mb-3">
-                    <h5 class="date text-muted mb-4"><i class="far fa-calendar-alt mr-2"></i>15th May 2025</h5>
-
-                    <p class="blog-content mb-4">
-                    <p>Integrating Playwright with My Portfolio</p>
-                    <p>A GitHub Actions Exploration
-                        In my latest update, the focus shifted towards seamlessly integrating Playwright test
-                        automation with my portfolio page using GitHub Actions. This experience opened up the vast
-                        realm of Continuous Integration (CI) workflows available through GitHub Actions, proving to
-                        be an insightful journey into automation and efficiency.</p>
-
-                    <p>Streamlining with Docker</p>
-                    <p>To successfully implement this integration, I leveraged the official Playwright Docker
-                        container from Docker Hub, a choice that significantly simplified dependency management.
-                        Initially, I was manually installing dependencies, which proved time-consuming and prone to
-                        errors when attempting optimizations. However, Docker provided a streamlined solution,
-                        housing all necessary dependencies in a concise image, thus accelerating the build process
-                        and mitigating complexity.</p>
-
-                    <p>Faster Builds, Simplified Processes</p>
-                    <p>By employing the Docker container, not only did I achieve dependable builds, but the process
-                        also became considerably faster and more straightforward. This allowed me to focus on
-                        orchestrating tests rather than managing nuanced dependency installations, enhancing the
-                        overall workflow efficiency.</p>
-
-                    <p>Lessons and Fascination</p>
-                    <p>The transition to this Docker-based setup demonstrated the power of reduced complexity and
-                        improved speed in builds. The synergy between Docker and GitHub Actions provided a
-                        practical, real-world application of CI principles, a fascinating outcome that displayed
-                        the benefits of automated testing pipelines.</p>
-
-                    <p>Through this exploration, I gained valuable insights into the integration of automation
-                        tools, improving not just my project’s reliability, but my development practices as a whole.
-                        This endeavor sheds light on the exquisite potential of automated workflows, leaving me
-                        eager to continue exploring the ocean of possibilities offered by GitHub Actions and related
-                        technologies.</p>
-
-                </div>
-                <!--Next article-->
-                <div class="about text-white p-3 mb-3">
-                    <hr class="blog-separator my-2">
-                    <h5 class="date text-muted mb-4"><i class="far fa-calendar-alt mr-2"></i>14th May 2025</h5>
-                    <p>
-                    <p class="blog-content mb-4">
-                    <p>Embracing Playwright</p>
-                    <p>A Powerful Tool for Modern Testing
-                        In the world of web development, Playwright is rapidly gaining popularity—and
-                        not just because of Microsoft's significant backing. Its robust features make
-                        it an outstanding choice for developers seeking a reliable testing framework. Having used
-                        Playwright for the past two years at work, I’ve witnessed firsthand its capabilities, so I
-                        decided to leverage this tool to build a comprehensive set of tests for my portfolio website,
-                        supporting Continuous Deployment (CD).
-                    </p>
-                    <p>The plan is</p>
-                    <p>1. Foundation with Simple Tests: The first step involves setting up a basic suite of tests.
-                        Establishing a solid foundation is crucial, as it lays the groundwork for more complex test
-                        cases down the line. These initial tests will ensure that the core functionalities of the
-                        website remain robust as new features are added.</p>
-                    <p>2. GitHub Actions Integration: By integrating these tests with GitHub Actions, I aim to automate
-                        the testing process, allowing tests to run automatically whenever changes are committed. This
-                        setup will not only save time but also enhance reliability, ensuring that new updates don’t
-                        inadvertently break existing functionality. </p>
-
-
+            </div>
+            <!-- Mobile TOC Floating Button -->
+            <button class="toc-fab d-lg-none" data-toggle="modal" data-target="#tocModal" aria-label="Show post navigation">
+                <i class="fas fa-list"></i>
+            </button>
+            <!-- Mobile TOC Modal -->
+            <div class="modal fade" id="tocModal" tabindex="-1" role="dialog" aria-labelledby="tocModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="tocModalLabel">Navigation</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <ul class="nav flex-column">
+                                <li class="nav-item"><a class="nav-link" href="#post-pom" data-dismiss="modal">Page Object Model (POM)<span class="toc-date">18th May 2025</span></a></li>
+                                <li class="nav-item"><a class="nav-link" href="#post-gha" data-dismiss="modal">Integrating Playwright with Portfolio<span class="toc-date">15th May 2025</span></a></li>
+                                <li class="nav-item"><a class="nav-link" href="#post-cd" data-dismiss="modal">Embracing Playwright<span class="toc-date">14th May 2025</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-        <br/> <br/> <br/>
+        <br/><br/><br/>
     </section>
-
     <nav class="footer">
         <ul>
             <li><a href="https://github.com/radlisowski" target="_blank">| github |</a></li>
@@ -156,7 +194,6 @@
         </ul>
     </nav>
 </div>
-
 <script
         src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -172,5 +209,43 @@
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"
 ></script>
+<script>
+// Smooth scroll and close modal for mobile TOC
+$(function() {
+  var scrollTarget = null;
+  function scrollToTarget(target) {
+    var el = document.querySelector(target);
+    if (el) {
+      el.scrollIntoView({behavior: 'smooth', block: 'start'});
+      // After smooth scroll, adjust up by 16px (about one line)
+      setTimeout(function() {
+        window.scrollBy({top: -16, left: 0, behavior: 'auto'});
+      }, 500);
+    }
+  }
+  $('#tocModal .nav-link').on('click', function(e) {
+    var target = $(this).attr('href');
+    if (target && target.startsWith('#')) {
+      e.preventDefault();
+      scrollTarget = target;
+      $('#tocModal').modal('hide');
+    }
+  });
+  $('#tocModal').on('hidden.bs.modal', function() {
+    if (scrollTarget) {
+      scrollToTarget(scrollTarget);
+      scrollTarget = null;
+    }
+  });
+  // Also apply to desktop TOC links
+  $('.toc-sidebar .nav-link').on('click', function(e) {
+    var target = $(this).attr('href');
+    if (target && target.startsWith('#')) {
+      e.preventDefault();
+      scrollToTarget(target);
+    }
+  });
+});
+</script>
 </body>
 </html>
