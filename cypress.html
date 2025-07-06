@@ -1,6 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <style>
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .about {
+            background: none !important;
+        }
+        body {
+            background: #000 !important;
+        }
+    </style>
     <meta charset="utf-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <link
@@ -57,10 +74,28 @@
             color: #bbb;
             margin-top: 2px;
         }
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .about {
+            background: none !important;
+        }
+        body {
+            background: #000 !important;
+        }
     </style>
 </head>
 <body>
+<canvas id="bg-canvas"></canvas>
+<canvas id="bg-canvas"></canvas>
 <div class="content">
+    <!-- Removed misplaced <style> tag from .content -->
     <nav class="navbar">
         <ul>
             <li><a href="index.html">|home|</a></li>
@@ -175,6 +210,7 @@
                 crossorigin="anonymous"
 ></script>
 <script>
+<script src="bg-animation.js"></script>
 // Smooth scroll and close modal for mobile TOC
 $(function() {
     var scrollTarget = null;

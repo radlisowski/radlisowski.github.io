@@ -2,6 +2,23 @@
 <html lang="en">
 
 <head>
+    <style>
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .about {
+            background: none !important;
+        }
+        body {
+            background: #000 !important;
+        }
+    </style>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
@@ -20,6 +37,7 @@
 </head>
 
 <body>
+<canvas id="bg-canvas"></canvas>
 <div class="content">
     <section id="home">
         <div class="container">
@@ -59,6 +77,6 @@
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
 <script src="main.js"></script>
+<script src="bg-animation.js"></script>
 </body>
-
 </html>
