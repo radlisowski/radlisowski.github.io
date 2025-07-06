@@ -19,47 +19,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@138;427&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
     <style>
-        /* Sticky sidebar for desktop */
-        @media (min-width: 992px) {
-            .toc-sidebar {
-                position: sticky;
-                top: 160px; /* Increased from 100px to align with first post body */
-                max-height: 80vh;
-                overflow-y: auto;
-                background: rgba(17,17,17,0.85); /* semi-transparent black */
-                color: #fff;
-                border-radius: 8px;
-                box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-                padding: 1.5rem 1rem;
-                margin-left: 2rem;
-            }
-            .toc-sidebar .nav-link {
-                color: #fff;
-            }
-            .toc-sidebar .nav-link.active, .toc-sidebar .nav-link:focus, .toc-sidebar .nav-link:hover {
-                color: #ffd700;
-                background: none;
-            }
-        }
-        /* Floating button for mobile */
-        @media (max-width: 991.98px) {
-            .toc-fab {
-                position: fixed;
-                bottom: 80px; /* Increased from 24px to avoid footer overlap */
-                right: 24px;
-                z-index: 1050;
-                background: black;
-                color: #fff;
-                border-radius: 50%;
-                width: 56px;
-                height: 56px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-                font-size: 1.7rem;
-                border: none;
-            }
+        /* Floating button for TOC (always visible) */
+        .toc-fab {
+            position: fixed;
+            bottom: 80px;
+            right: 24px;
+            z-index: 1050;
+            background: black;
+            color: #fff;
+            border-radius: 50%;
+            width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            font-size: 1.7rem;
+            border: none;
         }
         /* Modal TOC for mobile */
         .modal-content#tocModalContent, #tocModal .modal-content {
@@ -97,7 +73,7 @@
         <div class="container-fluid">
             <br/><br/><br/>
             <div class="row" style="max-width: 1200px; margin: auto;">
-                <div class="col-12 col-lg-9">
+                <div class="col-12">
                     <div class="about text-white p-3 mb-3">
                         <h2 class="blog-title">
                             <i class="fas fa-sync-alt mr-2"></i>
@@ -148,19 +124,10 @@
                     </div>
                 </div>
                 <!-- Desktop TOC -->
-                <div class="d-none d-lg-block col-lg-3">
-                    <nav class="toc-sidebar">
-                        <h6 class="text-uppercase font-weight-bold mb-3">Navigation</h6>
-                        <ul class="nav flex-column">
-                            <li class="nav-item"><a class="nav-link" href="#post-pom">Page Object Model (POM)<span class="toc-date">18th May 2025</span></a></li>
-                            <li class="nav-item"><a class="nav-link" href="#post-gha">Integrating Playwright with Portfolio<span class="toc-date">15th May 2025</span></a></li>
-                            <li class="nav-item"><a class="nav-link" href="#post-cd">Embracing Playwright<span class="toc-date">14th May 2025</span></a></li>
-                        </ul>
-                    </nav>
-                </div>
+
             </div>
             <!-- Mobile TOC Floating Button -->
-            <button class="toc-fab d-lg-none" data-toggle="modal" data-target="#tocModal" aria-label="Show post navigation">
+            <button class="toc-fab" data-toggle="modal" data-target="#tocModal" aria-label="Show post navigation">
                 <i class="fas fa-list"></i>
             </button>
             <!-- Mobile TOC Modal -->
@@ -237,14 +204,7 @@ $(function() {
       scrollTarget = null;
     }
   });
-  // Also apply to desktop TOC links
-  $('.toc-sidebar .nav-link').on('click', function(e) {
-    var target = $(this).attr('href');
-    if (target && target.startsWith('#')) {
-      e.preventDefault();
-      scrollToTarget(target);
-    }
-  });
+    // Desktop TOC removed
 });
 </script>
 </body>

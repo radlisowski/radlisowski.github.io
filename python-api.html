@@ -20,6 +20,44 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@138;427&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <style>
+        /* Floating button for TOC (always visible) */
+        .toc-fab {
+            position: fixed;
+            bottom: 80px;
+            right: 24px;
+            z-index: 1050;
+            background: black;
+            color: #fff;
+            border-radius: 50%;
+            width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            font-size: 1.7rem;
+            border: none;
+        }
+        /* Modal TOC for mobile */
+        .modal-content#tocModalContent, #tocModal .modal-content {
+            background: #111;
+            color: #fff;
+        }
+        #tocModal .nav-link {
+            color: #fff;
+        }
+        #tocModal .nav-link.active, #tocModal .nav-link:focus, #tocModal .nav-link:hover {
+            color: green;
+            background: none;
+        }
+        .toc-date {
+            display: block;
+            font-size: 0.85em;
+            color: #bbb;
+            margin-top: 2px;
+        }
+    </style>
 </head>
 <body>
 <div class="content">
@@ -37,257 +75,109 @@
     <section id=blog>
         <div class="container-fluid">
             <br/><br/><br/>
-
-            <div class="row row-cols-1 g-2 mt-5 mb-1 ml-1 mr-1 m-auto" style="max-width: 1200px;">
-                <br>
-                <div class="about text-white p-3 mb-3">
-                    <h2 class="blog-title">
-                        <i class="fas fa-cogs mr-2"></i>
-                        Building a Forkable Pytest API Testing Framework
-                    </h2>
+            <div class="row" style="max-width: 1200px; margin: auto;">
+                <div class="col-12">
+                    <!-- Python API Blog Content Start -->
+                    <div class="about text-white p-3 mb-3" id="post-pytest-framework">
+                        <h2 class="blog-title">
+                            <i class="fas fa-cogs mr-2"></i>
+                            Building a Forkable Pytest API Testing Framework
+                        </h2>
+                    </div>
+                    <div class="about text-white p-3 mb-3" id="post-pytest-may">
+                        <h5 class="date text-muted mb-4"><i class="far fa-calendar-alt mr-2"></i>13th May 2025</h5>
+                        <p>
+                            With the latest update, I've made several significant enhancements to our testing suite, aimed at bolstering our testing capabilities and streamlining processes. These updates not only extend our test coverage but also improve the clarity and maintainability of our test code.
+                        </p>
+                        <p>• New Tests for POST Requests</p>
+                        <p>I've implemented both positive and negative test cases for POST requests. These tests enhance our ability to catch potential issues by covering a broader range of scenarios that the application might encounter in real-world usage.</p>
+                        <p>• Introduction of GET Test</p>
+                        <p>The new GET test was a milestone, requiring the database to contain an actual entry to successfully retrieve data. This necessity led me to initially create a user within the test itself. Recognizing the potential for reusability, I decided to abstract this function into a separate fixture.</p>
+                        <p>• Reusable User Creation Fixture</p>
+                        <p>This new fixture efficiently handles user creation, setting the foundation for more robust and comprehensive testing. By reusing this fixture across multiple tests, not only do we save time, but we also ensure consistency whenever a user needs to be part of a test scenario.</p>
+                        <p>• Error Response Model and Constants</p>
+                        <p>As I added negative tests, I recognized the importance of a structured way to validate error messages. Thus, I created an error response model, which helps cleanly validate error messages. To further refine this process, constants were added for these error messages, improving both readability and maintainability.</p>
+                        <p>• Documentation and Readme Enhancements</p>
+                        <p>I've started focusing more on documentation, which is crucial for anyone interfacing with our testing framework. Initial steps included adding detailed comments throughout the codebase and updating our README file. These changes ensure that our documentation can guide not only our current team but also future contributors.</p>
+                        <p>These updates lay a solid foundation for further improvements. Over the coming weeks, I plan to continue enhancing our documentation, dive deeper into refining our testing methodology, and incorporate more advanced features. Stay tuned for more enhancements that will aim to fortify our testing framework even further!</p>
+                    </div>
+                    <div class="about text-white p-3 mb-3" id="post-pytest-apr17">
+                        <hr class="blog-separator my-2">
+                        <br>
+                        <h5 class="date text-muted mb-4"><i class="far fa-calendar-alt mr-2"></i>17th April 2025</h5>
+                        <p class="blog-content mb-4">• Enhancing Testing Efficiency with Pytest Fixtures and Hooks</p>
+                        <p>In a recent update, I've introduced several new features to our testing framework that streamline and enhance our test processes. The star of this update is undoubtedly the conftest.py file, which acts as a central hub for managing test fixtures. Here's a glimpse into the changes and their benefits:</p>
+                        <p>• Pytest Fixtures</p>
+                        <p>Fixtures in pytest are a powerful mechanism that allows you to set up a specific environment for each test to run in. They enable the execution of setup code before your tests run and can also include teardown logic for cleanup after tests have completed. By defining shared logic in fixtures, you can maintain clean, organized tests without redundant code. They’re incredibly versatile, supporting parameterization, dependency injection, and fixture scoping to control when and how frequently they are executed.</p>
+                        <p>• Database Connection Fixture</p>
+                        <p>In the current setup, conftest.py includes a fixture that establishes a connection to our database before tests are executed. This ensures that when I need to validate the response payloads against entries in the database, the connection is primed and ready to go. This setup not only saves time but also increases reliability by ensuring that database resources are always correctly initialized for each test.</p>
+                        <p>• Post-Test Cleanup</p>
+                        <p>Another significant feature implemented is a database cleanup hook. By using pytest decorators, I can now mark specific tests for cleanup. After these tests run—successfully or not—all documents in the database are removed. This approach ensures a clean environment before each test session and prevents interference from stale data, enhancing test accuracy and integrity.</p>
+                        <p>• Assertions in a Separate File</p>
+                        <p>Improving readability to further improve the organization of our tests, I've isolated assertions into a separate file. This change keeps individual test scripts cleaner and easier to read, thereby accelerating the process of creating new tests. By centralizing common assertions, we not only maintain consistency but also reduce the likelihood of errors across test cases.</p>
+                        <p>• Future Plans</p>
+                        <p>Further Looking forward, I plan to extend the use of fixtures to include user creation pre-tests. This will allow us to test GET endpoints more effectively by ensuring that the necessary users are in place before tests run. This capability enhances our ability to test state-dependent operations with confidence, ensuring that the application behaves as expected under realistic conditions.</p>
+                    </div>
+                    <div class="about text-white p-3 mb-3" id="post-pytest-apr14">
+                        <hr class="blog-separator my-2">
+                        <h5 class="date text-muted mb-4"><i class="far fa-calendar-alt mr-2"></i>14th April 2025</h5>
+                        <p>In today's update, I focused on enhancing the test framework for our API by integrating a dynamic environment management, added test structure, used the previously crated Pydantic model in test and introduced storage for constants. These changes aim to improve maintainability and scalability as we continue to develop and test our application.</p>
+                        <p>• Test Structure</p>
+                        <p>I refined the test structure to categorize tests into different endpoints and further subdivide them into positive and negative scenarios. This organization allows us to cover a broad range of test cases efficiently and ensures comprehensive coverage of our API functionalities. By structuring our tests this way, we can clearly identify the purpose of each test and focus on both expected success conditions and potential failure points.</p>
+                        <p>• Creating User Tests with Pydantic</p>
+                        <p>For testing the creation of a user via a POST request, I utilized Pydantic models to define the user schema. Pydantic provides data validation and parsing, allowing us to ensure that all inputs conform to expected formats before the request is sent. This approach not only improves test reliability but also helps catch errors early in the testing phase.</p>
+                        <p>• Constants Module</p>
+                        <p>Additionally, to maintain a clean and organized framework, I introduced a Constants.py file. This module collects all constants that remain unchanged throughout the tests, such as fixed parameter values. Centralizing constants ensures that our tests are easy to update and understand, reducing the likelihood of errors caused by hardcoded values.</p>
+                    </div>
+                    <div class="about text-white p-3 mb-3" id="post-pytest-apr10">
+                        <hr class="blog-separator my-2">
+                        <h5 class="date text-muted mb-4"><i class="far fa-calendar-alt mr-2"></i>10th April 2025</h5>
+                        <p>After setting up a basic FastAPI application with GET and POST endpoints, it's time to lay the groundwork for a strong and effective testing framework. Testing not only ensures that our API works as intended but also provides a safety net for future development. In this post, I'll explore the initial steps for creating a robust testing suite using PyTest, focusing on simplicity and gradual complexity.</p>
+                        <p>• The plan is</p>
+                        <p>1. Start Simple: Write straightforward tests to verify core functionalities, such as making sure an endpoint returns the correct data or status code. Validate that required fields like username and email are functioning as expected.</p>
+                        <p>2. Iterative Complexity: Gradually introduce complexity into my tests. This could involve testing edge cases, such as handling invalid input data, or simulating multiple sequential API calls.</p>
+                        <p>3. Introduce Variables for Dynamism: As I become comfortable, start introducing variables to make My tests more dynamic and reusable. This approach allows tests to automatically adjust to different scenarios without changing the framework, making it far more adaptable to future requirements which is the end goal.</p>
+                    </div>
+                    <div class="about text-white p-3 mb-3" id="post-pytest-apr2">
+                        <hr class="blog-separator my-2">
+                        <h5 class="date text-muted mb-4"><i class="far fa-calendar-alt mr-2"></i>2nd April 2025</h5>
+                        <p>I feel that the API automation framework sounds quite intimidating, especially for someone with little coding experience. Would it be nice if there was a simple yet effective framework that everybody can fork and use to test their endpoints? Well, this is what I will be attempting to do.</p>
+                        <p>We will start with PyTest. Used millions of times to do the job and falling in with all the AI buzz around, everybody seems to be going away from JavaScript and into cuddles with the snake (I am a dad, so dad jokes will happen). The main objective here is to keep things simple, so I will be using Pydantic Library, which will allow for rapid model creation and easy authentication.</p>
+                        <p>The first step is to create a FastAPI app with GET and POST endpoints. I will run this in a container, so a Dockerfile will come next... and then well… and then we will see.</p>
+                    </div>
+                    <!-- Python API Blog Content End -->
                 </div>
-<!--latest post-->
-
-
-
-<!--next post-->
-                <div class="about text-white p-3 mb-3">
-
-                    <h5 class="date text-muted mb-4"><i class="far fa-calendar-alt mr-2"></i>13th May 2025</h5>
-                    <p>
-                    <p>
-                        With the latest update, I've made several significant enhancements to our testing suite, aimed
-                        at bolstering our testing capabilities and streamlining processes. These updates not only extend
-                        our test coverage but also improve the clarity and maintainability of our test code.
-                    </p>
-
-                    <p>
-                        • New Tests for POST Requests</p>
-                    <p>
-                        I've implemented both positive and negative test cases for POST requests. These tests enhance
-                        our ability to catch potential issues by covering a broader range of scenarios that the
-                        application might encounter in real-world usage.
-                    </p>
-
-                    <p>
-                        • Introduction of GET Test</p>
-                    <p>
-                        The new GET test was a milestone, requiring the database to contain an actual entry to
-                        successfully retrieve data. This necessity led me to initially create a user within the test
-                        itself. Recognizing the potential for reusability, I decided to abstract this function into a
-                        separate fixture.
-                    </p>
-
-                    <p>
-                        • Reusable User Creation Fixture</p>
-                    <p>
-                        This new fixture efficiently handles user creation, setting the foundation for more robust and
-                        comprehensive testing. By reusing this fixture across multiple tests, not only do we save time,
-                        but we also ensure consistency whenever a user needs to be part of a test scenario.
-                    </p>
-
-                    <p>
-                        • Error Response Model and
-                        Constants</p>
-                    <p>
-                        As I added negative tests, I recognized the importance of a structured way to validate error
-                        messages. Thus, I created an error response model, which helps cleanly validate error messages.
-                        To further refine this process, constants were added for these error messages, improving both
-                        readability and maintainability.
-                    </p>
-
-                    <p>
-                        • Documentation and Readme Enhancements</p>
-                    <p>
-                        I've started focusing more on documentation, which is crucial for anyone interfacing with our
-                        testing framework. Initial steps included adding detailed comments throughout the codebase and
-                        updating our README file. These changes ensure that our documentation can guide not only our
-                        current team but also future contributors.
-                    </p>
-
-
-                    <p>
-                        These updates lay a solid foundation for further improvements. Over the coming weeks, I plan to
-                        continue enhancing our documentation, dive deeper into refining our testing methodology, and
-                        incorporate more advanced features. Stay tuned for more enhancements that will aim to fortify
-                        our testing framework even further!
-                    </p>
-
-
-                </div>
-
-                <div class="about text-white p-3 mb-3">
-                    <hr class="blog-separator my-2">
-
-                    <br>
-                    <h5 class="date text-muted mb-4"><i class="far fa-calendar-alt mr-2"></i>17th April 2025</h5>
-
-                    <p class="blog-content mb-4">
-                        • Enhancing Testing Efficiency with Pytest Fixtures and Hooks</p>
-                    <p> In a recent update, I've introduced several new features to our testing
-                        framework that streamline and enhance our test processes. The star of this update is undoubtedly
-                        the conftest.py file, which acts as a
-                        central hub for managing test fixtures. Here's a glimpse into the changes and their benefits:
-                    </p>
-                    <p>
-                        • Pytest Fixtures</p>
-                    <p> Fixtures in pytest are a powerful mechanism that allows you to set up a specific environment for
-                        each test to run in. They enable the execution of setup code before your tests run and can also
-                        include teardown logic for cleanup
-                        after tests have completed. By defining shared logic in fixtures, you can maintain clean,
-                        organized tests without redundant code.
-                        They’re incredibly versatile, supporting parameterization, dependency injection, and fixture
-                        scoping to control when and how
-                        frequently they are executed.
-                    </p>
-                    <p>
-                        • Database Connection Fixture</p>
-                    <p> In the current setup, conftest.py includes a fixture that establishes a connection to our
-                        database before
-                        tests are executed. This ensures that when I need to validate the response payloads against
-                        entries in the database, the connection is
-                        primed and ready to go. This setup not only saves time but also increases reliability by
-                        ensuring that database resources are always
-                        correctly initialized for each test.
-                    </p>
-                    <p>
-                        • Post-Test Cleanup </p>
-                    <p>Another significant feature implemented is a database cleanup hook. By using pytest decorators, I
-                        can now mark specific tests for cleanup. After these tests run—successfully or not—all documents
-                        in the database are removed. This
-                        approach ensures a clean environment before each test session and prevents interference from
-                        stale data, enhancing test accuracy and
-                        integrity.
-                    </p>
-                    <p>
-                        • Assertions in a Separate File</p>
-                    <p> Improving readability to further improve the organization of our tests, I've isolated assertions
-                        into a
-                        separate file. This change keeps individual test scripts cleaner and easier to read, thereby
-                        accelerating the process of creating new
-                        tests. By centralizing common assertions, we not only maintain consistency but also reduce the
-                        likelihood of errors across test cases.
-                    </p>
-                    <p>
-                        • Future Plans
-                    </p>
-                    <p>Further Looking forward, I plan to extend the use of fixtures to include user creation pre-tests.
-                        This will allow us to test GET endpoints more effectively by ensuring that the necessary users
-                        are in place before tests run. This
-                        capability enhances our ability to test state-dependent operations with confidence, ensuring
-                        that the application behaves as expected
-                        under realistic conditions.
-
-                    </p>
-                </div>
-
-
-                <div class="about text-white p-3 mb-3">
-                    <hr class="blog-separator my-2">
-                    <h5 class="date text-muted mb-4"><i class="far fa-calendar-alt mr-2"></i>14th April 2025</h5>
-                    <p>
-                        In today's update, I focused on enhancing the test framework for our API by integrating a
-                        dynamic environment management, added test
-                        structure, used the previously crated Pydantic model in test and introduced storage for
-                        constants. These changes aim to improve
-                        maintainability and scalability as we continue to develop and test our application.
-                    </p>
-                    <p>
-                        • Test Structure</p>
-                    <p>I refined the test structure to categorize tests into different endpoints and further subdivide
-                        them into positive and
-                        negative scenarios. This organization allows us to cover a broad range of test cases efficiently
-                        and ensures comprehensive coverage of
-                        our API functionalities. By structuring our tests this way, we can clearly identify the purpose
-                        of each test and focus on both
-                        expected success conditions and potential failure points.
-                    </p>
-                    <p>
-                        • Creating User Tests with Pydantic</p>
-                    <p> For testing the creation of a user via a POST request, I utilized Pydantic models to define the
-                        user schema. Pydantic provides data validation and parsing, allowing us to ensure that all
-                        inputs conform to expected formats before
-                        the request is sent. This approach not only improves test reliability but also helps catch
-                        errors early in the testing phase.
-                    </p>
-                    <p>
-                        • Constants Module</p>
-                    <p> Additionally, to maintain a clean and organized framework, I introduced a Constants.py file.
-                        This
-                        module collects all constants that remain unchanged throughout the tests, such as fixed
-                        parameter values. Centralizing constants
-                        ensures that our tests are easy to update and understand, reducing the likelihood of errors
-                        caused by hardcoded values.
-                    </p>
-                </div>
-
-
-                <div class="about text-white p-3 mb-3">
-                    <hr class="blog-separator my-2">
-                    <h5 class="date text-muted mb-4"><i class="far fa-calendar-alt mr-2"></i>10th April 2025</h5>
-                    <p>
-                        After setting up a basic FastAPI application with GET and POST endpoints, it's time to lay the
-                        groundwork for a strong and effective
-                        testing framework. Testing not only ensures that our API works as intended but also provides a
-                        safety net for future development. In
-                        this post, I'll explore the initial steps for creating a robust testing suite using PyTest,
-                        focusing on simplicity and gradual
-                        complexity.
-                    </p>
-                    <p>• The plan is</p>
-
-                    <p>
-                        1. Start Simple: Write straightforward tests to verify core functionalities, such as making sure
-                        an endpoint returns the correct data
-                        or status code. Validate that required fields like username and email are functioning as
-                        expected.
-                    </p>
-                    <p>
-                        2. Iterative Complexity: Gradually introduce complexity into my tests. This could involve
-                        testing edge cases, such as handling invalid
-                        input data, or simulating multiple sequential API calls.
-                    </p>
-
-                    <p>
-                        3. Introduce Variables for Dynamism: As I become comfortable, start introducing variables to
-                        make My tests more dynamic and reusable.
-                        This approach allows tests to automatically adjust to different scenarios without changing the
-                        framework, making it far more adaptable
-                        to future requirements which is the end goal.
-                    </p>
-                </div>
-
-
-                <div class="about text-white p-3 mb-3">
-                    <hr class="blog-separator my-2">
-                    <h5 class="date text-muted mb-4"><i class="far fa-calendar-alt mr-2"></i>2nd April 2025</h5>
-
-                    <p>
-                        I feel that the API automation framework sounds quite intimidating, especially for someone with
-                        little coding experience. Would it be
-                        nice if there was a simple yet effective framework that everybody can fork and use to test their
-                        endpoints? Well, this is what I will
-                        be attempting to do.
-                    </p>
-
-                    <p>
-                        We will start with PyTest. Used millions of times to do the job and falling in with all the AI
-                        buzz around, everybody seems to be
-                        going away from JavaScript and into cuddles with the snake (I am a dad, so dad jokes will
-                        happen). The main objective here is to keep
-                        things simple, so I will be using Pydantic Library, which will allow for rapid model creation
-                        and easy authentication.
-                    </p>
-
-                    <p>
-                        The first step is to create a FastAPI app with GET and POST endpoints. I will run this in a
-                        container, so a Dockerfile will come
-                        next... and then well… and then we will see.
-                    </p>
-                </div>
-
+                <!-- Desktop TOC -->
 
             </div>
+            <!-- Mobile TOC Floating Button -->
+            <button class="toc-fab" data-toggle="modal" data-target="#tocModal" aria-label="Show post navigation">
+                <i class="fas fa-list"></i>
+            </button>
+            <!-- Mobile TOC Modal -->
+            <div class="modal fade" id="tocModal" tabindex="-1" role="dialog" aria-labelledby="tocModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="tocModalLabel">Navigation</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <ul class="nav flex-column">
+                                <li class="nav-item"><a class="nav-link" href="#post-pytest-framework" data-dismiss="modal">Pytest API Framework<span class="toc-date">13th May 2025</span></a></li>
+                                <li class="nav-item"><a class="nav-link" href="#post-pytest-may" data-dismiss="modal">Enhancements & Coverage<span class="toc-date">13th May 2025</span></a></li>
+                                <li class="nav-item"><a class="nav-link" href="#post-pytest-apr17" data-dismiss="modal">Fixtures & Hooks<span class="toc-date">17th April 2025</span></a></li>
+                                <li class="nav-item"><a class="nav-link" href="#post-pytest-apr14" data-dismiss="modal">Test Structure & Pydantic<span class="toc-date">14th April 2025</span></a></li>
+                                <li class="nav-item"><a class="nav-link" href="#post-pytest-apr10" data-dismiss="modal">Testing Foundation<span class="toc-date">10th April 2025</span></a></li>
+                                <li class="nav-item"><a class="nav-link" href="#post-pytest-apr2" data-dismiss="modal">Framework Vision<span class="toc-date">2nd April 2025</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br/><br/><br/>
         </div>
         <br/><br/><br/>
     </section>
@@ -303,19 +193,50 @@
 </div>
 
 <script
-        src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"
+                src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+                integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+                crossorigin="anonymous"
 ></script>
 <script
-        src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"
+                src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+                integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+                crossorigin="anonymous"
 ></script>
 <script
-        src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-        crossorigin="anonymous"
+                src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+                integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+                crossorigin="anonymous"
 ></script>
+<script>
+// Smooth scroll and close modal for mobile TOC
+$(function() {
+    var scrollTarget = null;
+    function scrollToTarget(target) {
+        var el = document.querySelector(target);
+        if (el) {
+            el.scrollIntoView({behavior: 'smooth', block: 'start'});
+            // After smooth scroll, adjust up by 16px (about one line)
+            setTimeout(function() {
+                window.scrollBy({top: -16, left: 0, behavior: 'auto'});
+            }, 500);
+        }
+    }
+    $('#tocModal .nav-link').on('click', function(e) {
+        var target = $(this).attr('href');
+        if (target && target.startsWith('#')) {
+            e.preventDefault();
+            scrollTarget = target;
+            $('#tocModal').modal('hide');
+        }
+    });
+    $('#tocModal').on('hidden.bs.modal', function() {
+        if (scrollTarget) {
+            scrollToTarget(scrollTarget);
+            scrollTarget = null;
+        }
+    });
+    // Desktop TOC removed
+});
+</script>
 </body>
 </html>

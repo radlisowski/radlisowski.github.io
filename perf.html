@@ -20,6 +20,44 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@138;427&display=swap" rel="stylesheet"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <style>
+        /* Floating button for TOC (always visible) */
+        .toc-fab {
+            position: fixed;
+            bottom: 80px;
+            right: 24px;
+            z-index: 1050;
+            background: black;
+            color: #fff;
+            border-radius: 50%;
+            width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            font-size: 1.7rem;
+            border: none;
+        }
+        /* Modal TOC for mobile */
+        .modal-content#tocModalContent, #tocModal .modal-content {
+            background: #111;
+            color: #fff;
+        }
+        #tocModal .nav-link {
+            color: #fff;
+        }
+        #tocModal .nav-link.active, #tocModal .nav-link:focus, #tocModal .nav-link:hover {
+            color: green;
+            background: none;
+        }
+        .toc-date {
+            display: block;
+            font-size: 0.85em;
+            color: #bbb;
+            margin-top: 2px;
+        }
+    </style>
 </head>
 <body>
 <div class="content">
@@ -36,90 +74,55 @@
 
     <section id=blog>
         <div class="container-fluid">
-            <br/>
-            <br/>
-            <br/>
-            <div class="row row-cols-1 g-4 mt-5 mb-1 ml-1 mr-1 m-auto" style="max-width: 1200px;">
-
-                <!--Newest article-->
-
+            <br/><br/><br/>
+            <div class="row" style="max-width: 1200px; margin: auto;">
+                <div class="col-12">
+                    <!-- Performance Blog Content Start -->
                     <h2 class="blog-title">
                         <i class="fas fa-tachometer-alt mr-2"></i>
                         Performance Testing with K6
                     </h2>
-                    <br/> <br/> <br/>
-                    <div class="row row-cols-1 g-4 mt-5 mb-1 ml-1 mr-1 m-auto" style="max-width: 1200px;">
-                        <div class="about text-white p-3 mb-3">
-                            <br/>
-                            <h5 class="date text-muted mb-4"><i class="far fa-calendar-alt mr-2"></i>23rd June 2025</h5>
-
-                            <p class="blog-content mb-4">
+                    <br/><br/><br/>
+                    <div class="about text-white p-3 mb-3" id="post-k6-june">
+                        <h5 class="date text-muted mb-4"><i class="far fa-calendar-alt mr-2"></i>23rd June 2025</h5>
+                        <p class="blog-content mb-4">
                             <p>🚀 Exploring Performance Testing: From JMeter to K6 🛠️</p>
-
-                            <p>
-                                Lately, I’ve been diving into the world of performance testing, and it’s been an
-                                eye-opening journey. As someone relatively new to this area, I started with Apache
-                                JMeter, a well-established tool in the performance testing space. JMeter is incredibly
-                                powerful and professional, but I quickly realized it comes with a steep learning curve.
-                                Its GUI is packed with features, and while that’s great for flexibility, it can be
-                                overwhelming for beginners.
-
-
-                            </p>
-
+                            <p>Lately, I’ve been diving into the world of performance testing, and it’s been an eye-opening journey. As someone relatively new to this area, I started with Apache JMeter, a well-established tool in the performance testing space. JMeter is incredibly powerful and professional, but I quickly realized it comes with a steep learning curve. Its GUI is packed with features, and while that’s great for flexibility, it can be overwhelming for beginners.</p>
                             <p>Then I discovered K6, and it completely changed my perspective.</p>
-
-                            <p>K6 takes a much simpler, developer-friendly approach. All tests are written in
-                                JavaScript, which makes scripting intuitive and easy to integrate into modern
-                                development workflows. The CLI-based interface and clean output make it feel lightweight
-                                yet powerful. It’s especially great for developers who want to embed performance testing
-                                into CI/CD pipelines without dealing with a heavy GUI.</p>
-
+                            <p>K6 takes a much simpler, developer-friendly approach. All tests are written in JavaScript, which makes scripting intuitive and easy to integrate into modern development workflows. The CLI-based interface and clean output make it feel lightweight yet powerful. It’s especially great for developers who want to embed performance testing into CI/CD pipelines without dealing with a heavy GUI.</p>
                             <p>So what’s next? 🧭</p>
-                            <p>
-                                ...
-                            </p>
+                            <p>...</p>
+                            <p>Personally, I prefer K6 for most types of performance testing due to its simplicity and developer-centric design. However, if I were to pursue a full-time career in performance testing, I’d likely invest more time in mastering JMeter because of its depth, flexibility, and widespread industry use.</p>
+                        </p>
+                    </div>
+                    <!-- Performance Blog Content End -->
+                </div>
+                <!-- Desktop TOC -->
 
-                            <p>Personally, I prefer K6 for most types of performance testing due to its simplicity and
-                                developer-centric design. However, if I were to pursue a full-time career in performance
-                                testing, I’d likely invest more time in mastering JMeter because of its depth,
-                                flexibility, and widespread industry use.
-                            </p>
-
+            </div>
+            <!-- Mobile TOC Floating Button -->
+            <button class="toc-fab" data-toggle="modal" data-target="#tocModal" aria-label="Show post navigation">
+                <i class="fas fa-list"></i>
+            </button>
+            <!-- Mobile TOC Modal -->
+            <div class="modal fade" id="tocModal" tabindex="-1" role="dialog" aria-labelledby="tocModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="tocModalLabel">Navigation</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <ul class="nav flex-column">
+                                <li class="nav-item"><a class="nav-link" href="#post-k6-june" data-dismiss="modal">Exploring Performance Testing<span class="toc-date">23rd June 2025</span></a></li>
+                            </ul>
                         </div>
                     </div>
-
-
                 </div>
-
-            <!--Next article-->
-
-            <!--            <div class="row row-cols-1 g-4 mt-5 mb-1 ml-1 mr-1 m-auto" style="max-width: 1200px;">-->
-            <!--                <div class="about text-white p-3 mb-3">-->
-            <!--                    <br/>-->
-            <!--                    <h5 class="date text-muted mb-4"><i class="far fa-calendar-alt mr-2"></i>15th May 2025</h5>-->
-
-            <!--                    <p class="blog-content mb-4">-->
-            <!--                    <p></p>-->
-            <!--                    <p></p>-->
-
-            <!--                    <p></p>-->
-            <!--                    <p></p>-->
-
-            <!--                    <p></p>-->
-            <!--                    <p></p>-->
-
-            <!--                    <p></p>-->
-            <!--                    <p></p>-->
-
-            <!--                    <p></p>-->
-
-            <!--                </div>-->
-            <!--            </div>-->
-
-            <!--Next article-->
-
-            <br/> <br/> <br/>
+            </div>
+            <br/><br/><br/>
         </div>
     </section>
 
@@ -133,19 +136,50 @@
 </div>
 
 <script
-        src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-        crossorigin="anonymous"
+                src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+                integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+                crossorigin="anonymous"
 ></script>
 <script
-        src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
-        crossorigin="anonymous"
+                src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+                integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+                crossorigin="anonymous"
 ></script>
 <script
-        src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
-        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
-        crossorigin="anonymous"
+                src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+                integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+                crossorigin="anonymous"
 ></script>
+<script>
+// Smooth scroll and close modal for mobile TOC
+$(function() {
+    var scrollTarget = null;
+    function scrollToTarget(target) {
+        var el = document.querySelector(target);
+        if (el) {
+            el.scrollIntoView({behavior: 'smooth', block: 'start'});
+            // After smooth scroll, adjust up by 16px (about one line)
+            setTimeout(function() {
+                window.scrollBy({top: -16, left: 0, behavior: 'auto'});
+            }, 500);
+        }
+    }
+    $('#tocModal .nav-link').on('click', function(e) {
+        var target = $(this).attr('href');
+        if (target && target.startsWith('#')) {
+            e.preventDefault();
+            scrollTarget = target;
+            $('#tocModal').modal('hide');
+        }
+    });
+    $('#tocModal').on('hidden.bs.modal', function() {
+        if (scrollTarget) {
+            scrollToTarget(scrollTarget);
+            scrollTarget = null;
+        }
+    });
+    // Desktop TOC removed
+});
+</script>
 </body>
 </html>
