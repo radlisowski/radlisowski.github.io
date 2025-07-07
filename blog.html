@@ -2,6 +2,15 @@
 <html lang="en">
 <head>
     <style>
+        .gradient-heading {
+            background: linear-gradient(90deg, #4286f5 0%, #42e695 30%, #ff99bc 70%, #ff006a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+    </style>
+    <style>
         #bg-canvas {
             position: fixed;
             top: 0;
@@ -72,9 +81,10 @@
             <div class="row row-cols-1 row-cols-md-3 g-4 mt-5 mb-1 ml-1 mr-1">
                 <div class="about text-white p-3 mb-5">
                     <br/>
-                    <h2>Welcome to my blog!</h2>
+                    <h2><span class="gradient-heading">Welcome to my blog!</span></h2>
                     <br/>
                     <p>
+                        <i class="fas fa-lightbulb mr-1"></i>
                         Here, I share my thoughts and experiences as I navigate the world of software testing. My goal
                         is to create a space
                         where I can document my learning journey, share insights, and connect with others in the tech
@@ -82,34 +92,39 @@
                         tester, or just someone interested in technology, I hope you find something valuable here. Let's
                         explore the fascinating
                         world of software together! Have a question... message me on <a
-                            href="https://www.linkedin.com/in/radosław-lisowski-7ba5b048" target="_blank">linkedin</a>.
+                            href="https://www.linkedin.com/in/radosaw-lisowski-7ba5b048" target="_blank"><i class="fab fa-linkedin mr-1"></i>linkedin</a>.
                     </p>
 
                     <div class="project-list mt-4 text-left">
                         <ul class="list-unstyled">
                             <li class="mb-3">
                                 <a href="playwright.html" class="text-white text-decoration-none">
-                                    <i class="fas fa-theater-masks mr-2"></i> Playwright Testing Framework
+                                    <i class="fas fa-theater-masks mr-2" style="color:#8e44ad;"></i> Playwright Testing Framework
                                 </a>
                             </li>
                             <li class="mb-3">
                                 <a href="python-api.html" class="text-white text-decoration-none">
-                                    <i class="fab fa-python mr-2"></i> Python API Automation
+                                    <i class="fab fa-python mr-2" style="color:#3776ab;"></i> Python API Automation
                                 </a>
                             </li>
                             <li class="mb-3">
                                 <a href="cicd.html" class="text-white text-decoration-none">
-                                    <i class="fas fa-sync-alt mr-2"></i> CI/CD Pipeline Implementation
+                                    <i class="fas fa-sync-alt mr-2" style="color:#27ae60;"></i> CI/CD Pipeline Implementation
                                 </a>
                             </li>
                             <li class="mb-3">
                                 <a href="cypress.html" class="text-white text-decoration-none">
-                                    <i class="fas fa-check-circle mr-2"></i> Cypress Testing Framework
+                                    <i class="fas fa-vial mr-2" style="color:#00d8a7;"></i> Cypress Testing Framework
                                 </a>
                             </li>
                             <li class="mb-3">
                                 <a href="perf.html" class="text-white text-decoration-none">
-                                    <i class="fas fa-tachometer-alt mr-2"></i> Performance Testing with K6
+                                    <i class="fas fa-tachometer-alt mr-2" style="color:#e67e22;"></i> Performance Testing with K6
+                                </a>
+                            </li>
+                            <li class="mb-3">
+                                <a href="ai.html" class="text-white text-decoration-none">
+                                    <i class="fas fa-robot mr-2" style="color:#00b894;"></i> Playing with AI
                                 </a>
                             </li>
                         </ul>

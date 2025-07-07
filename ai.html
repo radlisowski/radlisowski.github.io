@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        /* Match popup navigation modal style to cypress page */
+        .modal-content#tocModalContent, #tocModal .modal-content {
+            background: #111;
+            color: #fff;
+        }
+        #tocModal .nav-link {
+            color: #fff;
+        }
+        #tocModal .nav-link.active, #tocModal .nav-link:focus, #tocModal .nav-link:hover {
+            color: green;
+            background: none;
+        }
+        .toc-date {
+            display: block;
+            font-size: 0.85em;
+            color: #bbb;
+            margin-top: 2px;
+        }
+        /* Popup navigation modal background to black */
+        .modal-content {
+            background: #000 !important;
+        }
+        .toc-fab {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            z-index: 1000;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 24px #0008;
+            background: transparent;
+            color: #fff;
+            font-size: 2rem;
+            border: 3px solid #fff;
+            outline: none;
+            transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+            background-clip: padding-box;
+        }
+        .toc-fab::before {
+            content: none;
+        }
+        .toc-fab:hover, .toc-fab:focus {
+            box-shadow: 0 8px 32px #000b;
+            transform: scale(1.08);
+            color: #fff;
+            border-color: #fff;
+        }
+        .gradient-heading {
+            background: linear-gradient(90deg, #4286f5 0%, #42e695 30%, #ff99bc 70%, #ff006a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .about {
+            background: none !important;
+        }
+
+        body {
+            background: #000 !important;
+        }
+
+        .breathing-link {
+            transition: color 0.3s;
+            font-weight: 600;
+            font-size: 1.1em;
+            text-decoration: none;
+        }
+
+        .breathing-link:hover {
+            animation: breathingColor 2s ease-in-out;
+        }
+
+        @keyframes breathingColor {
+            0% {
+                color: rgb(66, 135, 245);
+            }
+
+            50% {
+                color: rgb(255, 99, 188);
+            }
+
+            100% {
+                color: rgb(66, 135, 245);
+            }
+        }
+    </style>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        crossorigin="anonymous" />
+    <title>Playing with AI</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="images/fav-icon.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <!-- fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;402&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@138;427&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+    <!-- <canvas id="bg-canvas"></canvas> -->
+    <div class="content">
+        <nav class="navbar">
+            <ul>
+                <li><a class="breathing-link" href="index.html">home</a></li>
+                <li><a class="breathing-link" href="projects.html">projects</a></li>
+                <li><a class="breathing-link" href="blog.html">blog</a></li>
+                <li><a class="breathing-link" href="about.html">about</a></li>
+            </ul>
+        </nav>
+        <section id="blog">
+            <div class="container-fluid">
+                <br /><br /><br />
+                <div class="row" style="max-width: 1200px; margin: auto;">
+                    <div class="col-12">
+                        <div class="about text-white p-3 mb-3" id="post-ai-main">
+                            <h2 class="blog-title">
+                                <i class="fas fa-robot mr-2" style="color:#00b894;"></i>
+                                <span class="gradient-heading">Playing with AI</span>
+                            </h2>
+                        </div>
+                        <div class="about text-white p-3 mb-3" id="post-ai-july">
+                            <h5 class="date text-muted mb-4"><i class="far fa-calendar-alt mr-2"></i>5th July 2025</h5>
+                            <div class="blog-content mb-4 text-left" style="white-space:pre-line;">
+                                🚀 My First Experience with MCP & AI Agents (and it blew my mind) 🤯
+
+                                After seeing more and more posts about MCP—especially the bite-size videos from Debbie O'Brien — I had to investigate. The whole Agentic AI wave was all around me, and I had never paid much attention to it, being busy with other things. But once I decided to dive in… my mind was blown 🤯.
+
+                                👨‍💻 The Mission
+                                I decided to start my adventure with MCP and the GPT Agent in VS Code (Insider Edition)by trying to rebuild the Playwright test suite for a portfolio page I had built a while
+                                ago. It’s nothing special—just vanilla Playwright tests using Page Object Model (POM) for reusability, clean structure, and easy maintenance.
+
+                                🧠 Zero Code Written by Me
+                                Yes, literally—I didn’t type a single line of code or run any terminal commands.I started by adding the MCP Playwright Server. Super easy:
+
+                                -> Run Add Server
+                                -> Type @playwright/mcp
+                                -> Hit Enter
+                                -> Click Allow
+                                -> ✅ Done.
+                                Switched to Agent Mode in Copilot… and the rest is history.
+
+                                I simply told the Agent:
+
+                                -> Install Playwright & dependencies
+                                -> Initialize the project
+                                -> Use a prompt (originally by Debbie O'Brien, slightly adjusted for my setup)
+
+                                🎯 After that, it generated all the tests for me.
+
+                                ❌ Some tests were failing…
+                                I just said:
+                                🛠️ “Fix all the failing tests and run them again.”
+                                And like magic ✨—it kept fixing them until they passed!
+
+                                I then asked:
+                                🧱 “Add POM support.”
+                                Copilot: “Sure, no problem.” ✅
+
+                                🍬 But what came next made me feel like a kid in a candy shop!
+
+                                It asked:
+                                “Would you like further enhancements?”
+                                And presented a list of suggestions! 🤯
+
+                                🚀 Suggested Improvements:
+                                ✅ More assertions for images, content, dynamic elements
+                                🔁 Navigation flow tests using page objects
+                                🔗 External link validation (e.g., GitHub, LinkedIn)
+                                📊 Parameterized tests using test.each()
+                                ♿ Accessibility checks with axe-core
+                                🖼 Visual regression via screenshot diffs
+                                🌐 API testing & mocking
+                                📦 Shared base classes for reusable checks
+                                ❌ 404/error page testing
+                                ⏱ Performance tracking (page load times)
+
+                                It even offered to help implement any of them on the spot. ⏱ All of this took just 20 minutes. 😳
+
+                                🤔 This experience got me thinking…
+
+                                Is this the future of SDET work? Are we heading toward a world where we:
+
+                                -> Generate prompts 🎤
+                                -> Let AI handle the boilerplate ⚙️
+                                -> Focus more on quality oversight, strategy, and edge cases?
+
+                                Part of me says:
+                                ✅ Yes—it removes time-consuming grunt work, puts the human in control, and lowers the barrier for non-coding QAs to join automation.
+
+                                But also…
+                                💻 I like to code!
+
+                                Either way, the possibilities are HUGE.
+                                And this is just the beginning. 🌱 If you like to see the repo it is <a href="https://github.com/radlisowski/playwright_on_steroids">here</a>.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="toc-fab" data-toggle="modal" data-target="#tocModal" aria-label="Show post navigation">
+                <i class="fas fa-compass gradient-heading"></i>
+            </button>
+            <div class="modal fade" id="tocModal" tabindex="-1" role="dialog" aria-labelledby="tocModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="tocModalLabel">Navigation</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <ul class="nav flex-column">
+                                <li class="nav-item"><a class="nav-link" href="#post-ai-main"
+                                        data-dismiss="modal">Playing with AI<span class="toc-date">7th July
+                                            2025</span></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br /><br /><br />
+    </div>
+    </section>
+    <nav class="footer">
+        <ul>
+            <li><a class="breathing-link" href="https://github.com/radlisowski" target="_blank">github</a></li>
+            <li><a class="breathing-link" href="https://www.linkedin.com/in/radosław-lisowski-7ba5b048"
+                    target="_blank">linkedin</a></li>
+        </ul>
+    </nav>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        crossorigin="anonymous"></script>
+    <!-- <script src="bg-animation.js"></script> -->
+    <script>
+        // Smooth scroll and close modal for mobile TOC
+        $(function () {
+            var scrollTarget = null;
+            function scrollToTarget(target) {
+                var el = document.querySelector(target);
+                if (el) {
+                    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    setTimeout(function () {
+                        window.scrollBy({ top: -16, left: 0, behavior: 'auto' });
+                    }, 500);
+                }
+            }
+            $('#tocModal .nav-link').on('click', function (e) {
+                var target = $(this).attr('href');
+                if (target && target.startsWith('#')) {
+                    e.preventDefault();
+                    scrollTarget = target;
+                    $('#tocModal').modal('hide');
+                }
+            });
+            $('#tocModal').on('hidden.bs.modal', function () {
+                if (scrollTarget) {
+                    scrollToTarget(scrollTarget);
+                    scrollTarget = null;
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

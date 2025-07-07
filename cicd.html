@@ -2,6 +2,13 @@
 <html lang="en">
 <head>
     <style>
+        .gradient-heading {
+            background: linear-gradient(90deg, #4286f5 0%, #42e695 30%, #ff99bc 70%, #ff006a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
         #bg-canvas {
             position: fixed;
             top: 0;
@@ -59,20 +66,32 @@
         /* Floating button for TOC (always visible) */
         .toc-fab {
             position: fixed;
-            bottom: 80px;
-            right: 24px;
-            z-index: 1050;
-            background: black;
-            color: #fff;
+            bottom: 40px;
+            right: 40px;
+            z-index: 1000;
+            width: 60px;
+            height: 60px;
             border-radius: 50%;
-            width: 56px;
-            height: 56px;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-            font-size: 1.7rem;
-            border: none;
+            box-shadow: 0 4px 24px #0008;
+            background: transparent;
+            color: #fff;
+            font-size: 2rem;
+            border: 3px solid #fff;
+            outline: none;
+            transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
+            background-clip: padding-box;
+        }
+        .toc-fab::before {
+            content: none;
+        }
+        .toc-fab:hover, .toc-fab:focus {
+            box-shadow: 0 8px 32px #000b;
+            transform: scale(1.08);
+            color: #fff;
+            border-color: #fff;
         }
         /* Modal TOC for mobile */
         .modal-content#tocModalContent, #tocModal .modal-content {
@@ -95,7 +114,7 @@
     </style>
 </head>
 <body>
-<canvas id="bg-canvas"></canvas>
+<!-- <canvas id="bg-canvas"></canvas> -->
 <div class="content">
     <nav class="navbar">
         <ul>
@@ -114,19 +133,19 @@
                     <!-- CI/CD Blog Content Start -->
                     <div class="about text-white p-3 mb-3" id="post-cicd-main">
                         <h2 class="blog-title">
-                            <i class="fas fa-sync-alt mr-2"></i>
-                            CI / CD project
+                            <i class="fas fa-sync-alt mr-2" style="color:#27ae60;"></i>
+                            <span class="gradient-heading">CI / CD project</span>
                         </h2>
                     </div>
                     <div class="about text-white p-3 mb-3" id="post-cicd-june">
                         <h5 class="date text-muted mb-4"><i class="far fa-calendar-alt mr-2"></i>18th June 2025</h5>
                         <p class="blog-content mb-4">
-                            <p>So what’s next? 🧭</p>
-                            <p>All these small side projects are finally starting to come together, and it got me thinking. Since GitHub Pages doesn’t support a backend , I’m planning to bring in my FastAPI project (originally built for a Pytest API automation framework). It features a MongoDB-backed user system with basic POST and GET endpoints. The Plan is...</p>
-                            <p>🧱 Containerize the FastAPI backend</p>
-                            <p>☁️ Host it in the cloud (likely via Google Cloud Run, Render or Fly.io)</p>
-                            <p>🔗 Connect the portfolio login to the backend</p>
-                            <p>🎯 Have a real-world, full-stack mini project — with front-end, back-end, and automated end-to-end testing</p>
+                            <p><i class="fas fa-compass mr-1" style="color:#6c5ce7;"></i> So what’s next?</p>
+                            <p><i class="fas fa-project-diagram mr-1" style="color:#e67e22;"></i> All these small side projects are finally starting to come together, and it got me thinking. Since GitHub Pages doesn’t support a backend , I’m planning to bring in my FastAPI project (originally built for a Pytest API automation framework). It features a MongoDB-backed user system with basic POST and GET endpoints. The Plan is...</p>
+                            <p><i class="fas fa-cube mr-1" style="color:#00b894;"></i> Containerize the FastAPI backend</p>
+                            <p><i class="fas fa-cloud mr-1" style="color:#2980b9;"></i> Host it in the cloud (likely via Google Cloud Run, Render or Fly.io)</p>
+                            <p><i class="fas fa-link mr-1" style="color:#e74c3c;"></i> Connect the portfolio login to the backend</p>
+                            <p><i class="fas fa-bullseye mr-1" style="color:#f39c12;"></i> Have a real-world, full-stack mini project — with front-end, back-end, and automated end-to-end testing</p>
                         </p>
                     </div>
                     <div class="about text-white p-3 mb-3" id="post-cicd-may">
@@ -150,7 +169,7 @@
             </div>
             <!-- Mobile TOC Floating Button -->
             <button class="toc-fab" data-toggle="modal" data-target="#tocModal" aria-label="Show post navigation">
-                <i class="fas fa-list"></i>
+                <i class="fas fa-compass gradient-heading"></i>
             </button>
             <!-- Mobile TOC Modal -->
             <div class="modal fade" id="tocModal" tabindex="-1" role="dialog" aria-labelledby="tocModalLabel" aria-hidden="true">
@@ -243,7 +262,7 @@ $(function() {
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
     integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
     crossorigin="anonymous"></script>
-<script src="bg-animation.js"></script>
+<!-- <script src="bg-animation.js"></script> -->
 </body>
 </html>
 </html>
