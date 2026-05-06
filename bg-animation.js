@@ -1,9 +1,12 @@
-// Dynamic animated background: many tiny dots with wave-synchronized color
+// Dynamic animated background: morphing 3D logo-inspired dot clouds.
 (function() {
     document.addEventListener('DOMContentLoaded', function() {
-        let morphT = 0; // 0 = sphere, 1 = cube
-        let morphDir = 1; // 1 = sphere->cube, -1 = cube->sphere
-        const morphDuration = 8.0; // seconds for full morph
+        let morphT = 0; // 0 = Claude-inspired mark, 1 = ChatGPT-inspired knot
+        let morphDir = 1; // 1 = Claude->ChatGPT, -1 = ChatGPT->Claude
+        const morphDuration = 4.5; // seconds for full morph
+        const holdDuration = 1.0; // seconds to pause on each completed shape
+        let lastFrameTime = 0;
+        let holdTime = 0;
         const canvas = document.getElementById('bg-canvas');
         if (!canvas) return;
         const ctx = canvas.getContext('2d');
@@ -22,92 +25,181 @@
         // Gradient colors
         const colorA = [66, 135, 245]; // blue
         const colorB = [255, 99, 188]; // pink
-        const DOTS = 1500;
+        const DOTS = 2400;
         const dots = [];
-        // Arrange dots for all shapes
+
+        function pseudoRandom(seed) {
+            const x = Math.sin(seed * 12.9898) * 43758.5453;
+            return x - Math.floor(x);
+        }
+
+        function pointOnTube(pathX, pathY, pathZ, tangentAngle, tubeAngle, tubeRadius, depthPulse) {
+            const nx = Math.cos(tangentAngle + Math.PI / 2);
+            const ny = Math.sin(tangentAngle + Math.PI / 2);
+            const ring = Math.cos(tubeAngle) * tubeRadius;
+            return {
+                x: pathX + nx * ring,
+                y: pathY + ny * ring,
+                z: pathZ + Math.sin(tubeAngle) * tubeRadius * 0.7 + depthPulse
+            };
+        }
+
+        function roundedCapsulePoint(t, length, radius) {
+            const lineLength = length - radius * 2;
+            const straightWeight = lineLength;
+            const curveWeight = Math.PI * radius;
+            const perimeter = straightWeight * 2 + curveWeight * 2;
+            let distance = t * perimeter;
+
+            if (distance < straightWeight) {
+                const progress = distance / straightWeight;
+                return {
+                    x: -lineLength / 2 + progress * lineLength,
+                    y: -radius,
+                    tangent: 0
+                };
+            }
+            distance -= straightWeight;
+
+            if (distance < curveWeight) {
+                const angle = -Math.PI / 2 + distance / curveWeight * Math.PI;
+                return {
+                    x: lineLength / 2 + Math.cos(angle) * radius,
+                    y: Math.sin(angle) * radius,
+                    tangent: angle + Math.PI / 2
+                };
+            }
+            distance -= curveWeight;
+
+            if (distance < straightWeight) {
+                const progress = distance / straightWeight;
+                return {
+                    x: lineLength / 2 - progress * lineLength,
+                    y: radius,
+                    tangent: Math.PI
+                };
+            }
+            distance -= straightWeight;
+
+            const angle = Math.PI / 2 + distance / curveWeight * Math.PI;
+            return {
+                x: -lineLength / 2 + Math.cos(angle) * radius,
+                y: Math.sin(angle) * radius,
+                tangent: angle + Math.PI / 2
+            };
+        }
+
+        function createChatGPTPoint(i) {
+            const arm = i % 6;
+            const localIndex = Math.floor(i / 6);
+            const localT = (localIndex % 400) / 400;
+            const angle = arm * Math.PI / 3;
+            const capsule = roundedCapsulePoint(localT, 0.92, 0.2);
+            const centerRadius = 0.39;
+            const loopAngle = angle + Math.PI / 6;
+            const tubeAngle = pseudoRandom(i + 11) * Math.PI * 2;
+            const tubeRadius = 0.035 + pseudoRandom(i + 23) * 0.025;
+            const localX = capsule.x;
+            const localY = capsule.y;
+            const centerX = Math.cos(angle) * centerRadius;
+            const centerY = Math.sin(angle) * centerRadius;
+            const rotatedX = centerX + localX * Math.cos(loopAngle) - localY * Math.sin(loopAngle);
+            const rotatedY = centerY + localX * Math.sin(loopAngle) + localY * Math.cos(loopAngle);
+            const tangentAngle = loopAngle + capsule.tangent;
+            const z = 0.12 * Math.sin(localT * Math.PI * 2 + arm * 0.8);
+
+            return pointOnTube(rotatedX, rotatedY, z, tangentAngle, tubeAngle, tubeRadius, 0);
+        }
+
+        function createClaudePoint(i) {
+            const ray = i % 16;
+            const localIndex = Math.floor(i / 16);
+            const localT = (localIndex % 150) / 150;
+            const angle = ray * Math.PI / 8;
+            const easedT = Math.pow(localT, 0.72);
+            const length = ray % 2 === 0 ? 0.96 : 0.78;
+            const forward = 0.04 + easedT * length;
+            const width = 0.085 * Math.pow(1 - localT, 0.55) + 0.012;
+            const side = (pseudoRandom(i + 41) * 2 - 1) * width;
+            const roundTip = Math.sin(localT * Math.PI) * 0.018;
+
+            let x = forward;
+            let y = side + roundTip * Math.sin(ray * 1.7);
+            const rotatedX = x * Math.cos(angle) - y * Math.sin(angle);
+            const rotatedY = x * Math.sin(angle) + y * Math.cos(angle);
+            const z = 0.08 * Math.cos(localT * Math.PI + ray * 0.35);
+            const tubeAngle = pseudoRandom(i + 59) * Math.PI * 2;
+            const thickness = 0.018 + (1 - localT) * 0.025;
+
+            return pointOnTube(rotatedX, rotatedY, z, angle, tubeAngle, thickness, 0);
+        }
+
+        // Arrange dots for both logo-inspired shapes.
         for (let i = 0; i < DOTS; i++) {
             const t = i / (DOTS - 1);
-            // Sphere coordinates
-            const phi = Math.acos(1 - 2 * t); // latitude
-            const theta = Math.PI * (1 + Math.sqrt(5)) * i; // longitude
-            // Cube coordinates: distribute on cube faces
-            let face = i % 6;
-            let u = ((i * 97) % DOTS) / (DOTS - 1) * 2 - 1; // -1 to 1
-            let v = ((i * 233) % DOTS) / (DOTS - 1) * 2 - 1; // -1 to 1
-            let cubeX = 0, cubeY = 0, cubeZ = 0;
-            if (face === 0) { cubeX = 1; cubeY = u; cubeZ = v; }
-            else if (face === 1) { cubeX = -1; cubeY = u; cubeZ = v; }
-            else if (face === 2) { cubeY = 1; cubeX = u; cubeZ = v; }
-            else if (face === 3) { cubeY = -1; cubeX = u; cubeZ = v; }
-            else if (face === 4) { cubeZ = 1; cubeX = u; cubeY = v; }
-            else if (face === 5) { cubeZ = -1; cubeX = u; cubeY = v; }
             dots.push({
-                phi: phi,
-                theta: theta,
                 t: t,
                 angle: Math.random() * Math.PI * 2,
-                x: Math.random() * width,
-                y: Math.random() * height,
-                cube: {x: cubeX, y: cubeY, z: cubeZ}
+                claude: createClaudePoint(i),
+                chatgpt: createChatGPTPoint(i)
             });
         }
+
         function lerp(a, b, t) {
             return a * (1 - t) + b * t;
         }
+
+        function projectStatic(point, radius, centerX, centerY) {
+            const perspective = 1.45 / (2.25 - point.z * 0.35);
+
+            return {
+                x: centerX + radius * point.x * perspective,
+                y: centerY + radius * point.y * perspective,
+                perspective: perspective
+            };
+        }
+
         function animate() {
             ctx.clearRect(0, 0, width, height);
             let now = Date.now() * 0.001 * 0.8; // slow down by 20%
-            let groupAngle = now * 0.2;
-            // Morphing logic: just sphere <-> cube
-            morphT += morphDir * (1 / (morphDuration * 60)); // 60fps approx
-            if (morphT > 1) { morphT = 1; morphDir = -1; }
-            if (morphT < 0) { morphT = 0; morphDir = 1; }
+            let deltaTime = lastFrameTime ? Math.min(now - lastFrameTime, 0.05) : 0;
+            lastFrameTime = now;
+
+            // Morphing logic: Claude-inspired mark <-> ChatGPT-inspired knot.
+            if (holdTime > 0) {
+                holdTime -= deltaTime;
+            } else {
+                morphT += morphDir * (deltaTime / morphDuration);
+                if (morphT >= 1) {
+                    morphT = 1;
+                    morphDir = -1;
+                    holdTime = holdDuration;
+                }
+                if (morphT <= 0) {
+                    morphT = 0;
+                    morphDir = 1;
+                    holdTime = holdDuration;
+                }
+            }
             let ease = morphT * morphT * (3 - 2 * morphT); // smoothstep
-            let sphereRadius = Math.min(width, height) * 0.32;
+            let logoRadius = Math.min(width, height) * 0.34;
             let centerX = width / 2;
             let centerY = height / 2;
-            let rotY = groupAngle * 0.7;
-            let rotX = groupAngle * 0.3;
             for (let i = 0; i < DOTS; i++) {
                 let d = dots[i];
-                // --- Sphere position ---
-                let x0 = Math.sin(d.phi) * Math.cos(d.theta);
-                let y0 = Math.cos(d.phi);
-                let z0 = Math.sin(d.phi) * Math.sin(d.theta);
-                // Rotate around Y axis
-                let x1 = x0 * Math.cos(rotY) + z0 * Math.sin(rotY);
-                let z1 = -x0 * Math.sin(rotY) + z0 * Math.cos(rotY);
-                // Rotate around X axis
-                let y1 = y0 * Math.cos(rotX) - z1 * Math.sin(rotX);
-                let z2 = y0 * Math.sin(rotX) + z1 * Math.cos(rotX);
-                // Project to 2D
-                let perspectiveS = 1.5 / (2.2 - z2);
-                let sphereX = centerX + sphereRadius * x1 * perspectiveS;
-                let sphereY = centerY + sphereRadius * y1 * perspectiveS;
-                // --- Cube position ---
-                // Rotate cube in 3D
-                let cx0 = d.cube.x, cy0 = d.cube.y, cz0 = d.cube.z;
-                // Rotate around Y axis
-                let cx1 = cx0 * Math.cos(rotY) + cz0 * Math.sin(rotY);
-                let cz1 = -cx0 * Math.sin(rotY) + cz0 * Math.cos(rotY);
-                // Rotate around X axis
-                let cy1 = cy0 * Math.cos(rotX) - cz1 * Math.sin(rotX);
-                let cz2 = cy0 * Math.sin(rotX) + cz1 * Math.cos(rotX);
-                // Project to 2D
-                let perspectiveC = 1.5 / (2.2 - cz2);
-                let cubeX = centerX + sphereRadius * cx1 * perspectiveC;
-                let cubeY = centerY + sphereRadius * cy1 * perspectiveC;
+                let claude = projectStatic(d.claude, logoRadius, centerX, centerY);
+                let chatgpt = projectStatic(d.chatgpt, logoRadius, centerX, centerY);
                 // --- Morph between shapes ---
-                let px = lerp(sphereX, cubeX, ease);
-                let py = lerp(sphereY, cubeY, ease);
-                let alpha = lerp(0.8 * perspectiveS, 0.8 * perspectiveC, ease);
+                let px = lerp(claude.x, chatgpt.x, ease);
+                let py = lerp(claude.y, chatgpt.y, ease);
+                let alpha = lerp(0.82 * claude.perspective, 0.82 * chatgpt.perspective, ease);
                 // Wave color: make it look like a wave passing through
-                let wave = 0.5 + 0.5 * Math.sin(now * 2 - groupAngle * 3 + d.t * Math.PI * 8);
+                let wave = 0.5 + 0.5 * Math.sin(now * 2 + d.t * Math.PI * 8);
                 let r = Math.round(lerp(colorA[0], colorB[0], wave));
                 let g = Math.round(lerp(colorA[1], colorB[1], wave));
                 let b = Math.round(lerp(colorA[2], colorB[2], wave));
                 ctx.beginPath();
-                ctx.arc(px, py, 1, 0, Math.PI * 2);
+                ctx.arc(px, py, 1.05, 0, Math.PI * 2);
                 ctx.fillStyle = `rgb(${r},${g},${b})`;
                 ctx.globalAlpha = alpha;
                 ctx.fill();
