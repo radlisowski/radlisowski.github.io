@@ -26,6 +26,7 @@
     <title>Rad Lisowski</title>
     <link rel="stylesheet" href="style.css">
     <link rel="icon" href="images/fav-icon.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <!-- fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -58,10 +59,10 @@
         </style>
         <nav class="navbar">
             <ul>
-                <li><a class="breathing-link" href="index.html">home</a></li>
-                <li><a class="breathing-link" href="projects.html">projects</a></li>
-                <li><a class="breathing-link" href="blog.html">blog</a></li>
-                <li><a class="breathing-link" href="about.html">about</a></li>
+                <li><a class="breathing-link" href="#home">home</a></li>
+                <li><a class="breathing-link" href="#projects">projects</a></li>
+                <li><a class="breathing-link" href="#blog">blog</a></li>
+                <li><a class="breathing-link" href="#about">about</a></li>
             </ul>
         </nav>
 
@@ -70,8 +71,119 @@
             <div class="container-fluid ">
                 <div class="row justify-content-around sq1 p-5 ">
                     <div class="col-4-sm sq2 hero-box">
-                        <h1 class="display-1 text-center pt-3 pl-4 pr-4 pb-3 hero-title">reliable<br>code<br>by design
+                        <h1 class="display-1 text-center pt-3 pl-4 pr-4 pb-3 hero-title">
+                            <span id="hero-typewriter" aria-label="Hi... My name is Rado..."></span><span class="typing-cursor" aria-hidden="true"></span>
                         </h1>
+                    </div>
+                </div>
+            </div>
+            <a class="scroll-cue breathing-link" href="#projects" aria-label="Scroll down to projects">
+                <span>scroll down</span>
+                <span class="scroll-arrow">&darr;</span>
+            </a>
+        </section>
+
+        <section id="projects" class="landing-section">
+            <div class="container-fluid">
+                <div class="cards">
+                    <div class="row card-group row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mt-4 mb-5 justify-content-center">
+                        <div class="col mb-4 d-flex align-items-center justify-content-center">
+                            <div class="card h-100 text-white text-center">
+                                <a href="https://github.com/radlisowski/AUTO-TESTING-API" target="_blank">
+                                    <img src="images/api-agent-project.svg" class="card-img-top project-card-image" alt="API test-building agent illustration"/>
+                                </a>
+                                <div class="card-body">
+                                    <h5 class="card-title">APIs That Test Themselves</h5>
+                                    <p class="card-text">
+                                        An API test-building agent that scans FastAPI endpoints, reports missing pytest coverage,
+                                        and builds the missing tests. More on that in the
+                                        <a href="building-endpoints-that-test-themselves.html">blog</a>.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col mb-4 d-flex align-items-center justify-content-center">
+                            <div class="card h-100 text-white text-center">
+                                <a href="https://github.com/radlisowski/API_Testing_Automation_Python" target="_blank">
+                                    <img src="images/Pycharm-logo.png" class="card-img-top project-card-image" alt="PyCharm logo"/>
+                                </a>
+                                <div class="card-body">
+                                    <h5 class="card-title">Automation-PyCharm</h5>
+                                    <p class="card-text">
+                                        A ready-to-go API automation framework. Just plug your endpoint in and test away.
+                                        More on the <a href="python-api.html">blog</a>.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col mb-4 d-flex align-items-center justify-content-center">
+                            <div class="card h-100 text-white text-center">
+                                <a href="https://github.com/radlisowski/Playwright-E2E-Automation" target="_blank">
+                                    <img src="images/Playwright-logo.png" class="card-img-top project-card-image" alt="Playwright logo"/>
+                                </a>
+                                <div class="card-body">
+                                    <h5 class="card-title">Automation-Playwright</h5>
+                                    <p class="card-text">
+                                        Playwright E2E tests for this portfolio site, with page-focused automation patterns.
+                                        More on that in the <a href="playwright.html">blog</a>.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="blog" class="landing-section">
+            <div class="container-fluid">
+                <div class="row row-cols-1 row-cols-md-3 g-4 mt-5 mb-5 ml-1 mr-1">
+                    <div class="about text-white p-3 mb-5">
+                        <h2><span class="gradient-heading">Latest writing</span></h2>
+                        <div class="project-list mt-4 text-left">
+                            <ul class="list-unstyled">
+                                <li class="mb-3">
+                                    <a href="building-endpoints-that-test-themselves.html" class="text-white text-decoration-none">
+                                        <i class="fas fa-user-gear mr-2" style="color: #6c5ce7"></i> Building Endpoints That Test Themselves
+                                    </a>
+                                </li>
+                                <li class="mb-3">
+                                    <a href="playwright.html" class="text-white text-decoration-none">
+                                        <i class="fas fa-theater-masks mr-2" style="color: #8e44ad"></i> Playwright Testing Framework
+                                    </a>
+                                </li>
+                                <li class="mb-3">
+                                    <a href="ai.html" class="text-white text-decoration-none">
+                                        <i class="fas fa-robot mr-2" style="color: #00b894"></i> Playwright with MCP
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <a class="breathing-link section-link" href="blog.html">view blog page</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="landing-section">
+            <div class="container-fluid">
+                <div class="row row-cols-1 row-cols-md-3 g-4 mt-5 mb-5 ml-1 mr-1">
+                    <div class="about text-white p-3 mb-5">
+                        <h2><span class="gradient-heading">About me</span></h2>
+                        <br>
+                        <h5>My name is Radoslaw Lisowski, but people call me Rado...</h5>
+                        <br>
+                        <p>
+                            I build reliable code with a tester&apos;s eye for detail and a backend engineer&apos;s focus on APIs,
+                            automation, and maintainable systems. My toolkit includes Python, JavaScript, FastAPI,
+                            Pytest, Playwright, MongoDB, and CI/CD workflows.
+                        </p>
+                        <p>
+                            I am currently shaping my portfolio around backend engineering, API automation, and agentic testing tools.
+                        </p>
+                        <a class="breathing-link section-link" href="about.html">more about me</a>
                     </div>
                 </div>
             </div>
@@ -98,6 +210,25 @@
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
 <script src="bg-animation.js"></script>
+<script>
+    (function () {
+        const target = document.getElementById('hero-typewriter');
+        if (!target) return;
+
+        const text = 'Hi... My name\nis Rado...';
+        let index = 0;
+
+        function typeNextCharacter() {
+            target.innerHTML = text.slice(0, index).replace(/\n/g, '<br>');
+            index += 1;
+
+            if (index <= text.length) {
+                setTimeout(typeNextCharacter, 95);
+            }
+        }
+
+        typeNextCharacter();
+    })();
     </script>
 </body>
 
