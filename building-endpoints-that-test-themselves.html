@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .gradient-heading {
+            background: linear-gradient(90deg, #4286f5 0%, #42e695 30%, #ff99bc 70%, #ff006a 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            color: transparent;
+        }
+
+        #bg-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .about {
+            background: none !important;
+        }
+
+        body {
+            background: #000 !important;
+        }
+
+        .breathing-link {
+            transition: color 0.3s;
+            font-weight: 600;
+            font-size: 1.1em;
+            text-decoration: none;
+        }
+
+        .breathing-link:hover {
+            animation: breathingColor 2s ease-in-out;
+        }
+
+        @keyframes breathingColor {
+            0% { color: rgb(66, 135, 245); }
+            50% { color: rgb(255, 99, 188); }
+            100% { color: rgb(66, 135, 245); }
+        }
+    </style>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        crossorigin="anonymous" />
+    <title>Building Endpoints That Test Themselves</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="icon" href="images/fav-icon.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;402&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@138;427&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+    <!-- <canvas id="bg-canvas"></canvas> -->
+    <div class="content">
+        <nav class="navbar">
+            <ul>
+                <li><a class="breathing-link" href="index.html">home</a></li>
+                <li><a class="breathing-link" href="projects.html">projects</a></li>
+                <li><a class="breathing-link" href="blog.html">blog</a></li>
+                <li><a class="breathing-link" href="about.html">about</a></li>
+            </ul>
+        </nav>
+
+        <section id="blog">
+            <div class="container-fluid">
+                <br /><br /><br />
+                <div class="row" style="max-width: 1200px; margin: auto;">
+                    <div class="col-12">
+                        <div class="about text-white p-3 mb-3" id="post-endpoints-main">
+                            <h2 class="blog-title">
+                                <i class="fas fa-user-gear mr-2" style="color:#6c5ce7;"></i>
+                                <span class="gradient-heading">Building Endpoints That Test Themselves</span>
+                            </h2>
+                        </div>
+                        <div class="about text-white p-3 mb-3" id="post-endpoints-holder">
+                            <h5 class="date text-muted mb-4"><i class="far fa-calendar-alt mr-2"></i>7th May 2026</h5>
+                            <div class="blog-content mb-4 text-left">
+                                <p>
+                                    <i class="fas fa-user-gear mr-1" style="color:#6c5ce7;"></i>
+                                    We started building a local API test-building agent.
+                                </p>
+                                <p>
+                                    The big picture is an agent that can be dropped into any API repo, inspect the available endpoints,
+                                    analyze the existing tests, find coverage gaps, and eventually generate missing API tests in the
+                                    style of that repo.
+                                </p>
+                                <p>
+                                    <i class="fas fa-route mr-1" style="color:#00b894;"></i>
+                                    So far, the agent can scan app.py and discover FastAPI endpoints like POST /user/,
+                                    GET /user/{user_id}, and DELETE /user/{user_id}.
+                                </p>
+                                <p>
+                                    It can also scan the existing pytest files and detect which endpoints already have test coverage.
+                                </p>
+                                <p>
+                                    <i class="fas fa-drafting-compass mr-1" style="color:#f39c12;"></i>
+                                    The important part is the generic API test stencil. This stencil defines common API test expectations,
+                                    such as happy-path tests, not-found tests, invalid path parameter tests, missing payload tests,
+                                    wrong data type tests, and malformed JSON tests.
+                                </p>
+                                <p>
+                                    The agent compares each endpoint against that stencil and reports what already exists and what is missing.
+                                    For example, it can say that GET /user/{user_id} has a success test but is missing a not-found test
+                                    and an invalid-ID test.
+                                </p>
+                                <p>
+                                    We also added a learning file where the agent can summarize the existing project&apos;s test style.
+                                    That will matter later when we ask it to generate tests that look like the tests already in the repo.
+                                </p>
+                                <p>
+                                    Finally, we added unit tests for the agent itself so we can keep changing it safely.
+                                </p>
+                                <p>
+                                    The next step is to teach the agent to turn missing stencil items into actual pytest files.
+                                </p>
+                                <p>
+                                    <i class="fas fa-bullseye mr-1" style="color:#e74c3c;"></i>
+                                    The end goal is agentic API testing: analyze the repo, find the gaps, generate the tests,
+                                    and keep coverage aligned as endpoints change.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br /><br /><br />
+            </div>
+        </section>
+
+        <nav class="footer">
+            <ul>
+                <li><a class="breathing-link" href="https://github.com/radlisowski" target="_blank">github</a></li>
+                <li><a class="breathing-link" href="CV Radoslaw Lisowski.pdf" target="_blank">cv</a></li>
+                <li><a class="breathing-link" href="https://www.linkedin.com/in/radosław-lisowski-7ba5b048"
+                    target="_blank">linkedin</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        crossorigin="anonymous"></script>
+    <!-- <script src="bg-animation.js"></script> -->
+</body>
+</html>

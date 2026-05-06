@@ -25,7 +25,7 @@
         // Gradient colors
         const colorA = [66, 135, 245]; // blue
         const colorB = [255, 99, 188]; // pink
-        const DOTS = 2400;
+        const DOTS = 2280;
         const dots = [];
 
         function pseudoRandom(seed) {
@@ -182,7 +182,7 @@
                 }
             }
             let ease = morphT * morphT * (3 - 2 * morphT); // smoothstep
-            let logoRadius = Math.min(width, height) * 0.34;
+            let logoRadius = Math.min(width, height) * 0.43;
             let centerX = width / 2;
             let centerY = height / 2;
             for (let i = 0; i < DOTS; i++) {
